@@ -14,6 +14,8 @@ org.apache.juli.FileHandler.prefix = servlet-examples.
 java.util.logging.ConsoleHandler.level = FINE 
 java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter </code></pre>
 
+####**修改Linux系统下数据库表的大小写问题：**
+<font face="微软雅黑">在mysql配置文件<code>/etc/my.cnf</code>文件中的<code>\#ignore case </code>下增加<code>lower_case_table_names=1</code>。</font>
 ####**查看系统CPU核数和信息：**
 - <code>lscpu </code>
 - <code>cat /proc/cpuinfo </code>
