@@ -23,3 +23,9 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 
 ####**查看当前连接VPN的人员信息：**
 <code>last | grep still | grep ppp</code>    
+
+####**修改Linux系统上的时间显示，修改timezone,可以按中国地区时间显示:**
+1. <code>timedatectl</code>--><font face="微软雅黑">查看时间日期详细情况.</font>
+2. <code>timedatectl list-timezones</code>-->--><font face="微软雅黑">查看时间日期详细情况.</font>
+3. <code>timedatectl list-timezones | grep Shanghai</code>--><font face="微软雅黑">查询中国的时区.</font>
+4. <code>timedatectl set-timezone=Asia/Shanghai</code>--><font face="微软雅黑">设置服务器上的时区为中国时区.</font>
