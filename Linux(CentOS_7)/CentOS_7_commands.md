@@ -29,3 +29,9 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 2. <code>timedatectl list-timezones</code>-->--><font face="微软雅黑">查看时间日期详细情况.</font>
 3. <code>timedatectl list-timezones | grep Shanghai</code>--><font face="微软雅黑">查询中国的时区.</font>
 4. <code>timedatectl set-timezone=Asia/Shanghai</code>--><font face="微软雅黑">设置服务器上的时区为中国时区.</font>
+
+####**find命令和exec命令结合使用.&nbsp;&nbsp;例子：**
+1. <font face="微软雅黑">在<code>tomcat/logs</code>目录下删除更改日期在五天以前的日志文件：<code>find . -name '*.log' -mtime +5 -exec {} \;</code></font>
+2. <font face="微软雅黑">安全模式下，在<code>tomcat/logs</code>目录下删除更改日期在五天以前的日志文件：<code>find . -name '*.log' -mtime +5 -ok {} \;</code></font>
+3.  <font face="微软雅黑">复制：<code>find . -name "*.log" -exec cp {} .. \;</code>
+<br>>>><b>exec后面可以执行任何的命令</b>
