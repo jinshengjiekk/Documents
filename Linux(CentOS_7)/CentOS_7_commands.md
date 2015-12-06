@@ -34,4 +34,10 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 1. <font face="微软雅黑">在<code>tomcat/logs</code>目录下删除更改日期在五天以前的日志文件：<code>find . -name '*.log' -mtime +5 -exec {} \;</code></font>
 2. <font face="微软雅黑">安全模式下，在<code>tomcat/logs</code>目录下删除更改日期在五天以前的日志文件：<code>find . -name '*.log' -mtime +5 -ok {} \;</code></font>
 3.  <font face="微软雅黑">复制：<code>find . -name "*.log" -exec cp {} .. \;</code>
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>exec后面可以执行任何的命令</b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>exec后面可以执行任何的命令</b><br>
+
+####**查看硬盘使用情况:**&nbsp;&nbsp;&nbsp;&nbsp;<code>df -hl</code>
+
+####**Linux系统中普通用户无法登录情况：**
+1. 使用<code>vipw</code>或者<code>cat /etc/passwd</code>查看相关用户shell是否是<code>/sbin/nologin</code>；
+2. 用命令<code>usermod -s /bin/bash username</code>即可；
