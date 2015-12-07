@@ -41,3 +41,6 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 ####**Linux系统中普通用户无法登录情况：**
 1. 使用<code>vipw</code>或者<code>cat /etc/passwd</code>查看相关用户shell是否是<code>/sbin/nologin</code>；
 2. 用命令<code>usermod -s /bin/bash username</code>即可；
+
+####**打包|压缩**
+> 打包是指将一大堆文件或目录变成一个总的文件；压缩则是将一个大的文件通过一些压缩算法变成一个小文件。为什么要区分这两个概念呢？这源于Linux中很多压缩程序只能针对一个文件进行压缩，这样当你想要压缩一大堆文件时，你得先将这一大堆文件先打成一个包（tar命令），然后再用压缩程序进行压缩（gzip bzip2命令）。
