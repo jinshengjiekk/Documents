@@ -21,8 +21,9 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 - <code>cat /proc/cpuinfo </code>
 - <code>grep 'model name' /proc/cpuinfo |wc -l </code>
 
-####**查看当前连接VPN的人员信息：**
-<code>last | grep still | grep ppp</code>    
+####**VPN相关：**
+1. 查看当前连接VPN的人员信息：<code>last | grep still | grep ppp</code> ;
+2. 添加修改VPN账号<code>vi /etc/ppp/chap-secrets</code>;   
 
 ####**修改Linux系统上的时间显示，修改timezone,可以按中国地区时间显示:**
 1. <code>timedatectl</code>--><font face="微软雅黑">查看时间日期详细情况.</font>
