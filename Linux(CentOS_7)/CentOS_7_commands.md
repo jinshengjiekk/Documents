@@ -46,7 +46,8 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 ####**打包|压缩**
 > 打包是指将一大堆文件或目录变成一个总的文件；压缩则是将一个大的文件通过一些压缩算法变成一个小文件。为什么要区分这两个概念呢？这源于Linux中很多压缩程序只能针对一个文件进行压缩，这样当你想要压缩一大堆文件时，你得先将这一大堆文件先打成一个包（tar命令），然后再用压缩程序进行压缩（gzip bzip2命令）。
 
-####**与用户及用户组相关的文件**
+####**与用户及用户组相关的文件:**
 1. 用户<code> /etc/passwd</code>;
 2. 用户密码<code> /etc/shadow</code>;
 3. 用户组<code>/etc/group</code>;
+4. 用户组加密文件<code>/etc/gshadow</code>;
