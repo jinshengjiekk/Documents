@@ -5,3 +5,16 @@
 
 #####**EL表达式获取网站根路径**
 <code>${pageContext.request.contextPath}</code>
+
+
+#####**jQuery validation插件验证的多种方式**
+1. 用类名来验证---->>><code> class="required email"</code>;
+2. 单独增加属性---->>><code>equalTo="#password"</code>||<code>minlength="6"</code>;
+3. 将校验规则写入js代码中；
+4. 校验规则和submit分离;<pre>$("#form").validate({});
+$("#btn).click(function(){
+    if($("#form").valid()){
+     $("#form").submit();
+     }
+});
+</pre>
