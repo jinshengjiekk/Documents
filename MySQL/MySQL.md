@@ -1,0 +1,1 @@
+- MySQL中不支持 `FULL JOIN`,使用 `UNION` 加外链接来实现; 
