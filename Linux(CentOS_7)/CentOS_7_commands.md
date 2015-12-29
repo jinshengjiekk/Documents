@@ -51,3 +51,10 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 2. 用户密码<code> /etc/shadow</code>;
 3. 用户组<code>/etc/group</code>;
 4. 用户组加密文件<code>/etc/gshadow</code>;
+
+####**搭建svn服务器**
+1. 启动svn时不要到仓库位置，而是根目录。例如 `svnserve -d -r /var/svn/svnrepos`-->`svnserve -d -r /var/svn`
+2. 配置文件中注意空格，前端的空格会导致启动服务失败
+3. 可以修改默认的仓库位置, 在`/etc/sysconfig/svnserver`
+
+####**配置自动集成环境 Jenkins+SVN+Tomcat+Maven+Nexus+Nginx**
