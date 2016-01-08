@@ -41,3 +41,6 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 ####**Linux系统中普通用户无法登录情况：**
 1. 使用<code>vipw</code>或者<code>cat /etc/passwd</code>查看相关用户shell是否是<code>/sbin/nologin</code>；
 2. 用命令<code>usermod -s /bin/bash username</code>即可；
+
+####**用 find 查找丑陋的文件名**
+`find . -regex '.*[^-\_./0-9a-zA-Z].*'`
