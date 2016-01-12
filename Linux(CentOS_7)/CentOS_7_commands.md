@@ -63,3 +63,7 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 ####**用 find 查找丑陋的文件名**
 `find . -regex '.*[^-\_./0-9a-zA-Z].*'`
 
+####**第一个Shell脚本  Hello_World**
+<pre>#!/bin/bash
+# This is our first script.
+echo 'Hello World!'</pre>
