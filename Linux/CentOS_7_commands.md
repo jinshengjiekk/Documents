@@ -67,3 +67,12 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter <
 <pre>#!/bin/bash
 # This is our first script.
 echo 'Hello World!'</pre>
+
+####**Linux服务器安全登录**
+自己在国外的服务器遭遇DDos攻击，经过查找，攻击的IP来自CNNIC,不解释了。好在上面并没有什么重要的东西。这件事倒是给我上了一课，服务器的安全还是挺重要的。
+重新装了一个CentOS7系统，重新再来，这次首先要做的就是安全：  
+1. 修改`/etc/ssh/sshd_config`文件，禁止root用户远程登录；   
+2. 修改`/etc/ssh/sshd_config`文件，改变默认的22端口，同时修改防火墙设置`/etc/sysconfig/iptables`；  
+3. 新建用户可以从远程登录，同时在`/etc/ssh/sshd_config`中禁止密码登录，开启密钥登陆；
+  
+！！！ 开启密钥登陆的过程中遇到无法登录的问题，查找了好久，最后发现是`~/.ssh`和 `~/.ssh/authorized_keys`的权限问题，`~/.ssh`的权限必须是`700` ,  `~/.ssh/authorized_keys` 的权限必须是`600`才可以。   通过在 `/etc/ssh/sshd_config`将LogLevel级别调整到debug3,结合`/var/log/secure`可以查找到问题所在。
