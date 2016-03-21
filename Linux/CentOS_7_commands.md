@@ -76,3 +76,18 @@ echo 'Hello World!'</pre>
 3. 新建用户可以从远程登录，同时在`/etc/ssh/sshd_config`中禁止密码登录，开启密钥登陆；
   
 ！！！ 开启密钥登陆的过程中遇到无法登录的问题，查找了好久，最后发现是`~/.ssh`和 `~/.ssh/authorized_keys`的权限问题，`~/.ssh`的权限必须是`700` ,  `~/.ssh/authorized_keys` 的权限必须是`600`才可以。   通过在 `/etc/ssh/sshd_config`将LogLevel级别调整到debug3,结合`/var/log/secure`可以查找到问题所在。
+
+####**CentOS7 安装shadowsocks**
+上次服务器遭遇攻击后，重新买了服务器后，重新装了几次的VPN,最后都无法实现科学上网。猜测可能是GFW将相关的服务和VPS都屏蔽了。 最后选择shadowsocks作为科学上网的方法；简单的将相关步骤记录下：
+``` 
+yum install epel-release
+yum update
+yum install python-setuptools m2crypto supervisor
+easy_install pip
+pip install shadowsocks 
+vi /etc/shadowsocks.json
+vi /etc/supervisord.conf
+vi /etc/rc.local
+ ```
+
+
