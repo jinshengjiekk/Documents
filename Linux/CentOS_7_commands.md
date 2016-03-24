@@ -90,5 +90,5 @@ vi /etc/supervisord.conf
 vi /etc/rc.local
 (screen ssserver -c /etc/shadowsocks.conf)
  ```
- **shadowsocks 配合诸如finalspeed和锐速加速器的效果更佳**
+ ==》**shadowsocks 配合诸如finalspeed和锐速加速器的效果更佳，YouTube观看1080P视频毫无压力**《==
 
