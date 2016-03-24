@@ -88,6 +88,7 @@ pip install shadowsocks
 vi /etc/shadowsocks.json
 vi /etc/supervisord.conf
 vi /etc/rc.local
+(screen ssserver -c /etc/shadowsocks.conf)
  ```
-
+ **shadowsocks 配合诸如finalspeed和锐速加速器的效果更佳**
 
