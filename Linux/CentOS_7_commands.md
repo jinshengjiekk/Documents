@@ -1,4 +1,4 @@
-####**ÏîÄ¿²¿ÊğÔÚLinux·şÎñÆ÷ÉÏÊ±£¬¾­³£»áÓĞÄªÃûÆäÃîµÄ´íÎó£¬µ«ÊÇtomcatµÄ´íÎóÌáÊ¾ÓÖ·Ç³£µÄÉÙ£¬¿ÉÒÔÔÚÏîÄ¿µÄclassesÄ¿Â¼ÏÂÌí¼ÓÒÔÏÂÎÄ¼ş£¬logging.properties,È»ºó¿ÉÒÔÔÚlogs/servler-xxxÀïÃæ²é¿´ÏêÏ¸ĞÅÏ¢¡£  logging.propertieÄÚÈİÈçÏÂ£º**
+####**é¡¹ç›®éƒ¨ç½²åœ¨LinuxæœåŠ¡å™¨ä¸Šæ—¶ï¼Œç»å¸¸ä¼šæœ‰è«åå…¶å¦™çš„é”™è¯¯ï¼Œä½†æ˜¯tomcatçš„é”™è¯¯æç¤ºåˆéå¸¸çš„å°‘ï¼Œå¯ä»¥åœ¨é¡¹ç›®çš„classesç›®å½•ä¸‹æ·»åŠ ä»¥ä¸‹æ–‡ä»¶ï¼Œlogging.properties,ç„¶åå¯ä»¥åœ¨logs/servler-xxxé‡Œé¢æŸ¥çœ‹è¯¦ç»†ä¿¡æ¯ã€‚  logging.propertieå†…å®¹å¦‚ä¸‹ï¼š**
 
 <pre><code>handlers = org.apache.juli.FileHandler, java.util.logging.ConsoleHandler 
 
@@ -14,72 +14,72 @@ org.apache.juli.FileHandler.prefix = servlet-examples.
 java.util.logging.ConsoleHandler.level = FINE 
 java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter </code></pre>
 
-####**ĞŞ¸ÄLinuxÏµÍ³ÏÂÊı¾İ¿â±íµÄ´óĞ¡Ğ´ÎÊÌâ£º**
-<font face="Î¢ÈíÑÅºÚ">ÔÚmysqlÅäÖÃÎÄ¼ş<code>/etc/my.cnf</code>ÎÄ¼şÖĞµÄ<code>\#ignore case </code>ÏÂÔö¼Ó<code>lower_case_table_names=1</code>¡£</font>
-####**²é¿´ÏµÍ³CPUºËÊıºÍĞÅÏ¢£º**
+####**ä¿®æ”¹Linuxç³»ç»Ÿä¸‹æ•°æ®åº“è¡¨çš„å¤§å°å†™é—®é¢˜ï¼š**
+<font face="å¾®è½¯é›…é»‘">åœ¨mysqlé…ç½®æ–‡ä»¶<code>/etc/my.cnf</code>æ–‡ä»¶ä¸­çš„<code>\#ignore case </code>ä¸‹å¢åŠ <code>lower_case_table_names=1</code>ã€‚</font>
+####**æŸ¥çœ‹ç³»ç»ŸCPUæ ¸æ•°å’Œä¿¡æ¯ï¼š**
 - <code>lscpu </code>
 - <code>cat /proc/cpuinfo </code>
 - <code>grep 'model name' /proc/cpuinfo |wc -l </code>
 
-####**VPNÏà¹Ø£º**
-1. ²é¿´µ±Ç°Á¬½ÓVPNµÄÈËÔ±ĞÅÏ¢£º<code>last | grep still | grep ppp</code> ;
-2. Ìí¼ÓĞŞ¸ÄVPNÕËºÅ<code>vi /etc/ppp/chap-secrets</code>;   
+####**VPNç›¸å…³ï¼š**
+1. æŸ¥çœ‹å½“å‰è¿æ¥VPNçš„äººå‘˜ä¿¡æ¯ï¼š<code>last | grep still | grep ppp</code> ;
+2. æ·»åŠ ä¿®æ”¹VPNè´¦å·<code>vi /etc/ppp/chap-secrets</code>;   
 
-####**ĞŞ¸ÄLinuxÏµÍ³ÉÏµÄÊ±¼äÏÔÊ¾£¬ĞŞ¸Ätimezone,¿ÉÒÔ°´ÖĞ¹úµØÇøÊ±¼äÏÔÊ¾:**
-1. <code>timedatectl</code>--><font face="Î¢ÈíÑÅºÚ">²é¿´Ê±¼äÈÕÆÚÏêÏ¸Çé¿ö.</font>
-2. <code>timedatectl list-timezones</code>-->--><font face="Î¢ÈíÑÅºÚ">²é¿´Ê±¼äÈÕÆÚÏêÏ¸Çé¿ö.</font>
-3. <code>timedatectl list-timezones | grep Shanghai</code>--><font face="Î¢ÈíÑÅºÚ">²éÑ¯ÖĞ¹úµÄÊ±Çø.</font>
-4. <code>timedatectl set-timezone=Asia/Shanghai</code>--><font face="Î¢ÈíÑÅºÚ">ÉèÖÃ·şÎñÆ÷ÉÏµÄÊ±ÇøÎªÖĞ¹úÊ±Çø.</font>
+####**ä¿®æ”¹Linuxç³»ç»Ÿä¸Šçš„æ—¶é—´æ˜¾ç¤ºï¼Œä¿®æ”¹timezone,å¯ä»¥æŒ‰ä¸­å›½åœ°åŒºæ—¶é—´æ˜¾ç¤º:**
+1. <code>timedatectl</code>--><font face="å¾®è½¯é›…é»‘">æŸ¥çœ‹æ—¶é—´æ—¥æœŸè¯¦ç»†æƒ…å†µ.</font>
+2. <code>timedatectl list-timezones</code>-->--><font face="å¾®è½¯é›…é»‘">æŸ¥çœ‹æ—¶é—´æ—¥æœŸè¯¦ç»†æƒ…å†µ.</font>
+3. <code>timedatectl list-timezones | grep Shanghai</code>--><font face="å¾®è½¯é›…é»‘">æŸ¥è¯¢ä¸­å›½çš„æ—¶åŒº.</font>
+4. <code>timedatectl set-timezone=Asia/Shanghai</code>--><font face="å¾®è½¯é›…é»‘">è®¾ç½®æœåŠ¡å™¨ä¸Šçš„æ—¶åŒºä¸ºä¸­å›½æ—¶åŒº.</font>
 
-####**findÃüÁîºÍexecÃüÁî½áºÏÊ¹ÓÃ.&nbsp;&nbsp;Àı×Ó£º**
-1. <font face="Î¢ÈíÑÅºÚ">ÔÚ<code>tomcat/logs</code>Ä¿Â¼ÏÂÉ¾³ı¸ü¸ÄÈÕÆÚÔÚÎåÌìÒÔÇ°µÄÈÕÖ¾ÎÄ¼ş£º<code>find . -name '*.log' -mtime +5 -exec {} \;</code></font>
-2. <font face="Î¢ÈíÑÅºÚ">°²È«Ä£Ê½ÏÂ£¬ÔÚ<code>tomcat/logs</code>Ä¿Â¼ÏÂÉ¾³ı¸ü¸ÄÈÕÆÚÔÚÎåÌìÒÔÇ°µÄÈÕÖ¾ÎÄ¼ş£º<code>find . -name '*.log' -mtime +5 -ok {} \;</code></font>
-3.  <font face="Î¢ÈíÑÅºÚ">¸´ÖÆ£º<code>find . -name "*.log" -exec cp {} .. \;</code>
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>execºóÃæ¿ÉÒÔÖ´ĞĞÈÎºÎµÄÃüÁî</b><br>
+####**findå‘½ä»¤å’Œexecå‘½ä»¤ç»“åˆä½¿ç”¨.&nbsp;&nbsp;ä¾‹å­ï¼š**
+1. <font face="å¾®è½¯é›…é»‘">åœ¨<code>tomcat/logs</code>ç›®å½•ä¸‹åˆ é™¤æ›´æ”¹æ—¥æœŸåœ¨äº”å¤©ä»¥å‰çš„æ—¥å¿—æ–‡ä»¶ï¼š<code>find . -name '*.log' -mtime +5 -exec {} \;</code></font>
+2. <font face="å¾®è½¯é›…é»‘">å®‰å…¨æ¨¡å¼ä¸‹ï¼Œåœ¨<code>tomcat/logs</code>ç›®å½•ä¸‹åˆ é™¤æ›´æ”¹æ—¥æœŸåœ¨äº”å¤©ä»¥å‰çš„æ—¥å¿—æ–‡ä»¶ï¼š<code>find . -name '*.log' -mtime +5 -ok {} \;</code></font>
+3.  <font face="å¾®è½¯é›…é»‘">å¤åˆ¶ï¼š<code>find . -name "*.log" -exec cp {} .. \;</code>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>execåé¢å¯ä»¥æ‰§è¡Œä»»ä½•çš„å‘½ä»¤</b><br>
 
-####**²é¿´Ó²ÅÌÊ¹ÓÃÇé¿ö:**&nbsp;&nbsp;&nbsp;&nbsp;<code>df -hl</code>
+####**æŸ¥çœ‹ç¡¬ç›˜ä½¿ç”¨æƒ…å†µ:**&nbsp;&nbsp;&nbsp;&nbsp;<code>df -hl</code>
 
-####**LinuxÏµÍ³ÖĞÆÕÍ¨ÓÃ»§ÎŞ·¨µÇÂ¼Çé¿ö£º**
-1. Ê¹ÓÃ<code>vipw</code>»òÕß<code>cat /etc/passwd</code>²é¿´Ïà¹ØÓÃ»§shellÊÇ·ñÊÇ<code>/sbin/nologin</code>£»
-2. ÓÃÃüÁî<code>usermod -s /bin/bash username</code>¼´¿É£»
+####**Linuxç³»ç»Ÿä¸­æ™®é€šç”¨æˆ·æ— æ³•ç™»å½•æƒ…å†µï¼š**
+1. ä½¿ç”¨<code>vipw</code>æˆ–è€…<code>cat /etc/passwd</code>æŸ¥çœ‹ç›¸å…³ç”¨æˆ·shellæ˜¯å¦æ˜¯<code>/sbin/nologin</code>ï¼›
+2. ç”¨å‘½ä»¤<code>usermod -s /bin/bash username</code>å³å¯ï¼›
 
 
-####**´ò°ü|Ñ¹Ëõ**
-> ´ò°üÊÇÖ¸½«Ò»´ó¶ÑÎÄ¼ş»òÄ¿Â¼±ä³ÉÒ»¸ö×ÜµÄÎÄ¼ş£»Ñ¹ËõÔòÊÇ½«Ò»¸ö´óµÄÎÄ¼şÍ¨¹ıÒ»Ğ©Ñ¹ËõËã·¨±ä³ÉÒ»¸öĞ¡ÎÄ¼ş¡£ÎªÊ²Ã´ÒªÇø·ÖÕâÁ½¸ö¸ÅÄîÄØ£¿ÕâÔ´ÓÚLinuxÖĞºÜ¶àÑ¹Ëõ³ÌĞòÖ»ÄÜÕë¶ÔÒ»¸öÎÄ¼ş½øĞĞÑ¹Ëõ£¬ÕâÑùµ±ÄãÏëÒªÑ¹ËõÒ»´ó¶ÑÎÄ¼şÊ±£¬ÄãµÃÏÈ½«ÕâÒ»´ó¶ÑÎÄ¼şÏÈ´ò³ÉÒ»¸ö°ü£¨tarÃüÁî£©£¬È»ºóÔÙÓÃÑ¹Ëõ³ÌĞò½øĞĞÑ¹Ëõ£¨gzip bzip2ÃüÁî£©¡£
+####**æ‰“åŒ…|å‹ç¼©**
+> æ‰“åŒ…æ˜¯æŒ‡å°†ä¸€å¤§å †æ–‡ä»¶æˆ–ç›®å½•å˜æˆä¸€ä¸ªæ€»çš„æ–‡ä»¶ï¼›å‹ç¼©åˆ™æ˜¯å°†ä¸€ä¸ªå¤§çš„æ–‡ä»¶é€šè¿‡ä¸€äº›å‹ç¼©ç®—æ³•å˜æˆä¸€ä¸ªå°æ–‡ä»¶ã€‚ä¸ºä»€ä¹ˆè¦åŒºåˆ†è¿™ä¸¤ä¸ªæ¦‚å¿µå‘¢ï¼Ÿè¿™æºäºLinuxä¸­å¾ˆå¤šå‹ç¼©ç¨‹åºåªèƒ½é’ˆå¯¹ä¸€ä¸ªæ–‡ä»¶è¿›è¡Œå‹ç¼©ï¼Œè¿™æ ·å½“ä½ æƒ³è¦å‹ç¼©ä¸€å¤§å †æ–‡ä»¶æ—¶ï¼Œä½ å¾—å…ˆå°†è¿™ä¸€å¤§å †æ–‡ä»¶å…ˆæ‰“æˆä¸€ä¸ªåŒ…ï¼ˆtarå‘½ä»¤ï¼‰ï¼Œç„¶åå†ç”¨å‹ç¼©ç¨‹åºè¿›è¡Œå‹ç¼©ï¼ˆgzip bzip2å‘½ä»¤ï¼‰ã€‚
 
-####**ÓëÓÃ»§¼°ÓÃ»§×éÏà¹ØµÄÎÄ¼ş:**
-1. ÓÃ»§<code> /etc/passwd</code>;
-2. ÓÃ»§ÃÜÂë<code> /etc/shadow</code>;
-3. ÓÃ»§×é<code>/etc/group</code>;
-4. ÓÃ»§×é¼ÓÃÜÎÄ¼ş<code>/etc/gshadow</code>;
+####**ä¸ç”¨æˆ·åŠç”¨æˆ·ç»„ç›¸å…³çš„æ–‡ä»¶:**
+1. ç”¨æˆ·<code> /etc/passwd</code>;
+2. ç”¨æˆ·å¯†ç <code> /etc/shadow</code>;
+3. ç”¨æˆ·ç»„<code>/etc/group</code>;
+4. ç”¨æˆ·ç»„åŠ å¯†æ–‡ä»¶<code>/etc/gshadow</code>;
 
-####**´î½¨svn·şÎñÆ÷**
-1. Æô¶¯svnÊ±²»Òªµ½²Ö¿âÎ»ÖÃ£¬¶øÊÇ¸ùÄ¿Â¼¡£ÀıÈç `svnserve -d -r /var/svn/svnrepos`-->`svnserve -d -r /var/svn`
-2. ÅäÖÃÎÄ¼şÖĞ×¢Òâ¿Õ¸ñ£¬Ç°¶ËµÄ¿Õ¸ñ»áµ¼ÖÂÆô¶¯·şÎñÊ§°Ü
-3. ¿ÉÒÔĞŞ¸ÄÄ¬ÈÏµÄ²Ö¿âÎ»ÖÃ, ÔÚ`/etc/sysconfig/svnserver`
+####**æ­å»ºsvnæœåŠ¡å™¨**
+1. å¯åŠ¨svnæ—¶ä¸è¦åˆ°ä»“åº“ä½ç½®ï¼Œè€Œæ˜¯æ ¹ç›®å½•ã€‚ä¾‹å¦‚ `svnserve -d -r /var/svn/svnrepos`-->`svnserve -d -r /var/svn`
+2. é…ç½®æ–‡ä»¶ä¸­æ³¨æ„ç©ºæ ¼ï¼Œå‰ç«¯çš„ç©ºæ ¼ä¼šå¯¼è‡´å¯åŠ¨æœåŠ¡å¤±è´¥
+3. å¯ä»¥ä¿®æ”¹é»˜è®¤çš„ä»“åº“ä½ç½®, åœ¨`/etc/sysconfig/svnserver`
 
-####**ÅäÖÃ×Ô¶¯¼¯³É»·¾³ Jenkins+SVN+Tomcat+Maven+Nexus+Nginx**
+####**é…ç½®è‡ªåŠ¨é›†æˆç¯å¢ƒ Jenkins+SVN+Tomcat+Maven+Nexus+Nginx**
 
-####**ÓÃ find ²éÕÒ³óÂªµÄÎÄ¼şÃû**
+####**ç”¨ find æŸ¥æ‰¾ä¸‘é™‹çš„æ–‡ä»¶å**
 `find . -regex '.*[^-\_./0-9a-zA-Z].*'`
 
-####**µÚÒ»¸öShell½Å±¾  Hello_World**
+####**ç¬¬ä¸€ä¸ªShellè„šæœ¬  Hello_World**
 <pre>#!/bin/bash
 # This is our first script.
 echo 'Hello World!'</pre>
 
-####**Linux·şÎñÆ÷°²È«µÇÂ¼**
-×Ô¼ºÔÚ¹úÍâµÄ·şÎñÆ÷ÔâÓöDDos¹¥»÷£¬¾­¹ı²éÕÒ£¬¹¥»÷µÄIPÀ´×ÔCNNIC,²»½âÊÍÁË¡£ºÃÔÚÉÏÃæ²¢Ã»ÓĞÊ²Ã´ÖØÒªµÄ¶«Î÷¡£Õâ¼şÊÂµ¹ÊÇ¸øÎÒÉÏÁËÒ»¿Î£¬·şÎñÆ÷µÄ°²È«»¹ÊÇÍ¦ÖØÒªµÄ¡£
-ÖØĞÂ×°ÁËÒ»¸öCentOS7ÏµÍ³£¬ÖØĞÂÔÙÀ´£¬Õâ´ÎÊ×ÏÈÒª×öµÄ¾ÍÊÇ°²È«£º  
-1. ĞŞ¸Ä`/etc/ssh/sshd_config`ÎÄ¼ş£¬½ûÖ¹rootÓÃ»§Ô¶³ÌµÇÂ¼£»   
-2. ĞŞ¸Ä`/etc/ssh/sshd_config`ÎÄ¼ş£¬¸Ä±äÄ¬ÈÏµÄ22¶Ë¿Ú£¬Í¬Ê±ĞŞ¸Ä·À»ğÇ½ÉèÖÃ`/etc/sysconfig/iptables`£»  
-3. ĞÂ½¨ÓÃ»§¿ÉÒÔ´ÓÔ¶³ÌµÇÂ¼£¬Í¬Ê±ÔÚ`/etc/ssh/sshd_config`ÖĞ½ûÖ¹ÃÜÂëµÇÂ¼£¬¿ªÆôÃÜÔ¿µÇÂ½£»
+####**LinuxæœåŠ¡å™¨å®‰å…¨ç™»å½•**
+è‡ªå·±åœ¨å›½å¤–çš„æœåŠ¡å™¨é­é‡DDosæ”»å‡»ï¼Œç»è¿‡æŸ¥æ‰¾ï¼Œæ”»å‡»çš„IPæ¥è‡ªCNNIC,ä¸è§£é‡Šäº†ã€‚å¥½åœ¨ä¸Šé¢å¹¶æ²¡æœ‰ä»€ä¹ˆé‡è¦çš„ä¸œè¥¿ã€‚è¿™ä»¶äº‹å€’æ˜¯ç»™æˆ‘ä¸Šäº†ä¸€è¯¾ï¼ŒæœåŠ¡å™¨çš„å®‰å…¨è¿˜æ˜¯æŒºé‡è¦çš„ã€‚
+é‡æ–°è£…äº†ä¸€ä¸ªCentOS7ç³»ç»Ÿï¼Œé‡æ–°å†æ¥ï¼Œè¿™æ¬¡é¦–å…ˆè¦åšçš„å°±æ˜¯å®‰å…¨ï¼š  
+1. ä¿®æ”¹`/etc/ssh/sshd_config`æ–‡ä»¶ï¼Œç¦æ­¢rootç”¨æˆ·è¿œç¨‹ç™»å½•ï¼›   
+2. ä¿®æ”¹`/etc/ssh/sshd_config`æ–‡ä»¶ï¼Œæ”¹å˜é»˜è®¤çš„22ç«¯å£ï¼ŒåŒæ—¶ä¿®æ”¹é˜²ç«å¢™è®¾ç½®`/etc/sysconfig/iptables`ï¼›  
+3. æ–°å»ºç”¨æˆ·å¯ä»¥ä»è¿œç¨‹ç™»å½•ï¼ŒåŒæ—¶åœ¨`/etc/ssh/sshd_config`ä¸­ç¦æ­¢å¯†ç ç™»å½•ï¼Œå¼€å¯å¯†é’¥ç™»é™†ï¼›
   
-£¡£¡£¡ ¿ªÆôÃÜÔ¿µÇÂ½µÄ¹ı³ÌÖĞÓöµ½ÎŞ·¨µÇÂ¼µÄÎÊÌâ£¬²éÕÒÁËºÃ¾Ã£¬×îºó·¢ÏÖÊÇ`~/.ssh`ºÍ `~/.ssh/authorized_keys`µÄÈ¨ÏŞÎÊÌâ£¬`~/.ssh`µÄÈ¨ÏŞ±ØĞëÊÇ`700` ,  `~/.ssh/authorized_keys` µÄÈ¨ÏŞ±ØĞëÊÇ`600`²Å¿ÉÒÔ¡£   Í¨¹ıÔÚ `/etc/ssh/sshd_config`½«LogLevel¼¶±ğµ÷Õûµ½debug3,½áºÏ`/var/log/secure`¿ÉÒÔ²éÕÒµ½ÎÊÌâËùÔÚ¡£
+ï¼ï¼ï¼ å¼€å¯å¯†é’¥ç™»é™†çš„è¿‡ç¨‹ä¸­é‡åˆ°æ— æ³•ç™»å½•çš„é—®é¢˜ï¼ŒæŸ¥æ‰¾äº†å¥½ä¹…ï¼Œæœ€åå‘ç°æ˜¯`~/.ssh`å’Œ `~/.ssh/authorized_keys`çš„æƒé™é—®é¢˜ï¼Œ`~/.ssh`çš„æƒé™å¿…é¡»æ˜¯`700` ,  `~/.ssh/authorized_keys` çš„æƒé™å¿…é¡»æ˜¯`600`æ‰å¯ä»¥ã€‚   é€šè¿‡åœ¨ `/etc/ssh/sshd_config`å°†LogLevelçº§åˆ«è°ƒæ•´åˆ°debug3,ç»“åˆ`/var/log/secure`å¯ä»¥æŸ¥æ‰¾åˆ°é—®é¢˜æ‰€åœ¨ã€‚
 
-####**CentOS7 °²×°shadowsocks**
-ÉÏ´Î·şÎñÆ÷ÔâÓö¹¥»÷ºó£¬ÖØĞÂÂòÁË·şÎñÆ÷ºó£¬ÖØĞÂ×°ÁË¼¸´ÎµÄVPN,×îºó¶¼ÎŞ·¨ÊµÏÖ¿ÆÑ§ÉÏÍø¡£²Â²â¿ÉÄÜÊÇGFW½«Ïà¹ØµÄ·şÎñºÍVPS¶¼ÆÁ±ÎÁË¡£ ×îºóÑ¡Ôñshadowsocks×÷Îª¿ÆÑ§ÉÏÍøµÄ·½·¨£»¼òµ¥µÄ½«Ïà¹Ø²½Öè¼ÇÂ¼ÏÂ£º
-``` 
+####**CentOS7 å®‰è£…shadowsocks**
+ä¸Šæ¬¡æœåŠ¡å™¨é­é‡æ”»å‡»åï¼Œé‡æ–°ä¹°äº†æœåŠ¡å™¨åï¼Œé‡æ–°è£…äº†å‡ æ¬¡çš„VPN,æœ€åéƒ½æ— æ³•å®ç°ç§‘å­¦ä¸Šç½‘ã€‚çŒœæµ‹å¯èƒ½æ˜¯GFWå°†ç›¸å…³çš„æœåŠ¡å’ŒVPSéƒ½å±è”½äº†ã€‚ æœ€åé€‰æ‹©shadowsocksä½œä¸ºç§‘å­¦ä¸Šç½‘çš„æ–¹æ³•ï¼›ç®€å•çš„å°†ç›¸å…³æ­¥éª¤è®°å½•ä¸‹ï¼š
+<pre> 
 yum install epel-release
 yum update
 yum install python-setuptools m2crypto supervisor
@@ -89,6 +89,15 @@ vi /etc/shadowsocks.json
 vi /etc/supervisord.conf
 vi /etc/rc.local
 (screen ssserver -c /etc/shadowsocks.conf)
- ```
- ==¡·**shadowsocks ÅäºÏÖîÈçfinalspeedºÍÈñËÙ¼ÓËÙÆ÷µÄĞ§¹û¸ü¼Ñ£¬YouTube¹Û¿´1080PÊÓÆµºÁÎŞÑ¹Á¦**¡¶==
+</pre>
+ ==ã€‹**shadowsocks é…åˆè¯¸å¦‚finalspeedå’Œé”é€ŸåŠ é€Ÿå™¨çš„æ•ˆæœæ›´ä½³ï¼ŒYouTubeè§‚çœ‹1080Pè§†é¢‘æ¯«æ— å‹åŠ›**ã€Š==
 
+####**æŸ¥æ‰¾Linuxä¸­å¤§æ–‡ä»¶**####
+` find . -type f -size +800M  -print0 | xargs -0 ls -l `  
+` find . -type f -size +800M  -print0 | xargs -0 du -h `  
+`  find . -type f -size +800M  -print0 | xargs -0 du -h | sort -nr `
+  
+####**æŸ¥æ‰¾Linuxä¸­å¤§ç›®å½•**####
+` du -h --max-depth=1 `  
+` du -h --max-depth=2 | sort -n `  
+`  du -hm --max-depth=2 | sort -nr | head -12 `
