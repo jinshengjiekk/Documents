@@ -1,8 +1,8 @@
-- **MySQLÖÐ²»Ö§³Ö `FULL JOIN`,Ê¹ÓÃ `UNION` ¼ÓÍâÁ´½ÓÀ´ÊµÏÖ; ()**
-- **MySQLÖÐ²»Ö§³Ö¸üÐÂ´Ó¾äµÄ±í£¬¿ÉÓÃÌæ´ú·½°¸£»()**
+- **MySQLä¸­ä¸æ”¯æŒ `FULL JOIN`,ä½¿ç”¨ `UNION` åŠ å¤–é“¾æŽ¥æ¥å®žçŽ°; ()**
+- **MySQLä¸­ä¸æ”¯æŒæ›´æ–°ä»Žå¥çš„è¡¨ï¼Œå¯ç”¨æ›¿ä»£æ–¹æ¡ˆï¼›()**
 
 
-####**ÉúÈÕÎÊÌâ£¬»ñÈ¡×î½üµÄÉúÈÕ**
+####**ç”Ÿæ—¥é—®é¢˜ï¼ŒèŽ·å–æœ€è¿‘çš„ç”Ÿæ—¥**
 
 <pre>SELECT
 	NAME,

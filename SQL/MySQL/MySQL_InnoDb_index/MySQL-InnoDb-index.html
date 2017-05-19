@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>MySQL-InnoDb-index.html</title>
+  <meta name="generator" content="Haroopad 0.13.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>div.oembedall-githubrepos{border:1px solid #DDD;border-radius:4px;list-style-type:none;margin:0 0 10px;padding:8px 10px 0;font:13.34px/1.4 helvetica,arial,freesans,clean,sans-serif;width:452px;background-color:#fff}div.oembedall-githubrepos .oembedall-body{background:-moz-linear-gradient(center top,#FAFAFA,#EFEFEF);background:-webkit-gradient(linear,left top,left bottom,from(#FAFAFA),to(#EFEFEF));border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-top:1px solid #EEE;margin-left:-10px;margin-top:8px;padding:5px 10px;width:100%}div.oembedall-githubrepos h3{font-size:14px;margin:0;padding-left:18px;white-space:nowrap}div.oembedall-githubrepos p.oembedall-description{color:#444;font-size:12px;margin:0 0 3px}div.oembedall-githubrepos p.oembedall-updated-at{color:#888;font-size:11px;margin:0}div.oembedall-githubrepos ul.oembedall-repo-stats{border:none;float:right;font-size:11px;font-weight:700;padding-left:15px;position:relative;z-index:5;margin:0}div.oembedall-githubrepos ul.oembedall-repo-stats li{border:none;color:#666;display:inline-block;list-style-type:none;margin:0!important}div.oembedall-githubrepos ul.oembedall-repo-stats li a{background-color:transparent;border:none;color:#666!important;background-position:5px -2px;background-repeat:no-repeat;border-left:1px solid #DDD;display:inline-block;height:21px;line-height:21px;padding:0 5px 0 23px}div.oembedall-githubrepos ul.oembedall-repo-stats li:first-child a{border-left:medium none;margin-right:-3px}div.oembedall-githubrepos ul.oembedall-repo-stats li a:hover{background:5px -27px no-repeat #4183C4;color:#FFF!important;text-decoration:none}div.oembedall-githubrepos ul.oembedall-repo-stats li:first-child a:hover{border-bottom-left-radius:3px;border-top-left-radius:3px}ul.oembedall-repo-stats li:last-child a:hover{border-bottom-right-radius:3px;border-top-right-radius:3px}span.oembedall-closehide{background-color:#aaa;border-radius:2px;cursor:pointer;margin-right:3px}div.oembedall-container{margin-top:5px;text-align:left}.oembedall-ljuser{font-weight:700}.oembedall-ljuser img{vertical-align:bottom;border:0;padding-right:1px}.oembedall-stoqembed{border-bottom:1px dotted #999;float:left;overflow:hidden;width:730px;line-height:1;background:#FFF;color:#000;font-family:Arial,Liberation Sans,DejaVu Sans,sans-serif;font-size:80%;text-align:left;margin:0;padding:0}.oembedall-stoqembed a{color:#07C;text-decoration:none;margin:0;padding:0}.oembedall-stoqembed a:hover{text-decoration:underline}.oembedall-stoqembed a:visited{color:#4A6B82}.oembedall-stoqembed h3{font-family:Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;font-size:130%;font-weight:700;margin:0;padding:0}.oembedall-stoqembed .oembedall-reputation-score{color:#444;font-size:120%;font-weight:700;margin-right:2px}.oembedall-stoqembed .oembedall-user-info{height:35px;width:185px}.oembedall-stoqembed .oembedall-user-info .oembedall-user-gravatar32{float:left;height:32px;width:32px}.oembedall-stoqembed .oembedall-user-info .oembedall-user-details{float:left;margin-left:5px;overflow:hidden;white-space:nowrap;width:145px}.oembedall-stoqembed .oembedall-question-hyperlink{font-weight:700}.oembedall-stoqembed .oembedall-stats{background:#EEE;margin:0 0 0 7px;padding:4px 7px 6px;width:58px}.oembedall-stoqembed .oembedall-statscontainer{float:left;margin-right:8px;width:86px}.oembedall-stoqembed .oembedall-votes{color:#555;padding:0 0 7px;text-align:center}.oembedall-stoqembed .oembedall-vote-count-post{font-size:240%;color:#808185;display:block;font-weight:700}.oembedall-stoqembed .oembedall-views{color:#999;padding-top:4px;text-align:center}.oembedall-stoqembed .oembedall-status{margin-top:-3px;padding:4px 0;text-align:center;background:#75845C;color:#FFF}.oembedall-stoqembed .oembedall-status strong{color:#FFF;display:block;font-size:140%}.oembedall-stoqembed .oembedall-summary{float:left;width:635px}.oembedall-stoqembed .oembedall-excerpt{line-height:1.2;margin:0;padding:0 0 5px}.oembedall-stoqembed .oembedall-tags{float:left;line-height:18px}.oembedall-stoqembed .oembedall-tags a:hover{text-decoration:none}.oembedall-stoqembed .oembedall-post-tag{background-color:#E0EAF1;border-bottom:1px solid #3E6D8E;border-right:1px solid #7F9FB6;color:#3E6D8E;font-size:90%;line-height:2.4;margin:2px 2px 2px 0;padding:3px 4px;text-decoration:none;white-space:nowrap}.oembedall-stoqembed .oembedall-post-tag:hover{background-color:#3E6D8E;border-bottom:1px solid #37607D;border-right:1px solid #37607D;color:#E0EAF1}.oembedall-stoqembed .oembedall-fr{float:right}.oembedall-stoqembed .oembedall-statsarrow{background-image:url(http://cdn.sstatic.net/stackoverflow/img/sprites.png?v=3);background-repeat:no-repeat;overflow:hidden;background-position:0 -435px;float:right;height:13px;margin-top:12px;width:7px}.oembedall-facebook1{border:1px solid #1A3C6C;padding:0;font:13.34px/1.4 verdana;width:500px}.oembedall-facebook2{background-color:#627add}.oembedall-facebook2 a{color:#e8e8e8;text-decoration:none}.oembedall-facebookBody{background-color:#fff;vertical-align:top;padding:5px}.oembedall-facebookBody .contents{display:inline-block;width:100%}.oembedall-facebookBody div img{float:left;margin-right:5px}div.oembedall-lanyard{-webkit-box-shadow:none;-webkit-transition-delay:0s;-webkit-transition-duration:.4000000059604645s;-webkit-transition-property:width;-webkit-transition-timing-function:cubic-bezier(0.42,0,.58,1);background-attachment:scroll;background-clip:border-box;background-color:transparent;background-image:none;background-origin:padding-box;border-width:0;box-shadow:none;color:#112644;display:block;float:left;font-family:'Trebuchet MS',Trebuchet,sans-serif;font-size:16px;height:253px;line-height:19px;margin:0;max-width:none;min-height:0;outline:#112644 0;overflow-x:visible;overflow-y:visible;padding:0;position:relative;text-align:left;vertical-align:baseline;width:804px}div.oembedall-lanyard .tagline{font-size:1.5em}div.oembedall-lanyard .wrapper{overflow:hidden;clear:both}div.oembedall-lanyard .split{float:left;display:inline}div.oembedall-lanyard .prominent-place .flag:active,div.oembedall-lanyard .prominent-place .flag:focus,div.oembedall-lanyard .prominent-place .flag:hover,div.oembedall-lanyard .prominent-place .flag:link,div.oembedall-lanyard .prominent-place .flag:visited{float:left;display:block;width:48px;height:48px;position:relative;top:-5px;margin-right:10px}div.oembedall-lanyard .place-context{font-size:.889em}div.oembedall-lanyard .prominent-place .sub-place{display:block}div.oembedall-lanyard .prominent-place{font-size:1.125em;line-height:1.1em;font-weight:400}div.oembedall-lanyard .main-date{color:#8CB4E0;font-weight:700;line-height:1.1}div.oembedall-lanyard .first{width:48.57%;margin:0 0 0 2.857%}.mermaid .label{color:#333}.node circle,.node polygon,.node rect{fill:#cde498;stroke:#13540c;stroke-width:1px}.edgePath .path{stroke:green;stroke-width:1.5px}.cluster rect{fill:#cdffb2;rx:40;stroke:#6eaa49;stroke-width:1px}.cluster text{fill:#333}.actor{stroke:#13540c;fill:#cde498}text.actor{fill:#000;stroke:none}.actor-line{stroke:grey}.messageLine0{stroke-width:1.5;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#333}.messageLine1{stroke-width:1.5;stroke-dasharray:"2 2";stroke:#333}#arrowhead{fill:#333}#crosshead path{fill:#333!important;stroke:#333!important}.messageText{fill:#333;stroke:none}.labelBox{stroke:#326932;fill:#cde498}.labelText,.loopText{fill:#000;stroke:none}.loopLine{stroke-width:2;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#326932}.note{stroke:#6eaa49;fill:#fff5ad}.noteText{fill:#000;stroke:none;font-family:'trebuchet ms',verdana,arial;font-size:14px}.section{stroke:none;opacity:.2}.section0,.section2{fill:#6eaa49}.section1,.section3{fill:#fff;opacity:.2}.sectionTitle0,.sectionTitle1,.sectionTitle2,.sectionTitle3{fill:#333}.sectionTitle{text-anchor:start;font-size:11px;text-height:14px}.grid .tick{stroke:lightgrey;opacity:.3;shape-rendering:crispEdges}.grid path{stroke-width:0}.today{fill:none;stroke:red;stroke-width:2px}.task{stroke-width:2}.taskText{text-anchor:middle;font-size:11px}.taskTextOutsideRight{fill:#000;text-anchor:start;font-size:11px}.taskTextOutsideLeft{fill:#000;text-anchor:end;font-size:11px}.taskText0,.taskText1,.taskText2,.taskText3{fill:#fff}.task0,.task1,.task2,.task3{fill:#487e3a;stroke:#13540c}.taskTextOutside0,.taskTextOutside1,.taskTextOutside2,.taskTextOutside3{fill:#000}.active0,.active1,.active2,.active3{fill:#cde498;stroke:#13540c}.activeText0,.activeText1,.activeText2,.activeText3{fill:#000!important}.done0,.done1,.done2,.done3{stroke:grey;fill:lightgrey;stroke-width:2}.doneText0,.doneText1,.doneText2,.doneText3{fill:#000!important}.crit0,.crit1,.crit2,.crit3{stroke:#f88;fill:red;stroke-width:2}.activeCrit0,.activeCrit1,.activeCrit2,.activeCrit3{stroke:#f88;fill:#cde498;stroke-width:2}.doneCrit0,.doneCrit1,.doneCrit2,.doneCrit3{stroke:#f88;fill:lightgrey;stroke-width:2;cursor:pointer;shape-rendering:crispEdges}.activeCritText0,.activeCritText1,.activeCritText2,.activeCritText3,.doneCritText0,.doneCritText1,.doneCritText2,.doneCritText3{fill:#000!important}.titleText{text-anchor:middle;font-size:18px;fill:#000}text{font-family:'trebuchet ms',verdana,arial;font-size:14px}html{height:100%}body{margin:0!important;padding:5px 20px 26px!important;background-color:#fff;font-family:"Lucida Grande","Segoe UI","Apple SD Gothic Neo","Malgun Gothic","Lucida Sans Unicode",Helvetica,Arial,sans-serif;font-size:.9em;overflow-x:hidden;overflow-y:auto}br,h1,h2,h3,h4,h5,h6{clear:both}hr.page{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x;border:0;height:3px;padding:0}hr.underscore{border-top-style:dashed!important}body >:first-child{margin-top:0!important}img.plugin{box-shadow:0 1px 3px rgba(0,0,0,.1);border-radius:3px}iframe{border:0}figure{-webkit-margin-before:0;-webkit-margin-after:0;-webkit-margin-start:0;-webkit-margin-end:0}kbd{border:1px solid #aaa;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;-moz-box-shadow:1px 2px 2px #ddd;-webkit-box-shadow:1px 2px 2px #ddd;box-shadow:1px 2px 2px #ddd;background-color:#f9f9f9;background-image:-moz-linear-gradient(top,#eee,#f9f9f9,#eee);background-image:-o-linear-gradient(top,#eee,#f9f9f9,#eee);background-image:-webkit-linear-gradient(top,#eee,#f9f9f9,#eee);background-image:linear-gradient(top,#eee,#f9f9f9,#eee);padding:1px 3px;font-family:inherit;font-size:.85em}.oembeded .oembed_photo{display:inline-block}img[data-echo]{margin:25px 0;width:100px;height:100px;background:url(../img/ajax.gif) center center no-repeat #fff}.spinner{display:inline-block;width:10px;height:10px;margin-bottom:-.1em;border:2px solid rgba(0,0,0,.5);border-top-color:transparent;border-radius:100%;-webkit-animation:spin 1s infinite linear;animation:spin 1s infinite linear}.spinner:after{content:'';display:block;width:0;height:0;position:absolute;top:-6px;left:0;border:4px solid transparent;border-bottom-color:rgba(0,0,0,.5);-webkit-transform:rotate(45deg);transform:rotate(45deg)}@-webkit-keyframes spin{to{-webkit-transform:rotate(360deg)}}@keyframes spin{to{transform:rotate(360deg)}}p.toc{margin:0!important}p.toc ul{padding-left:10px}p.toc>ul{padding:10px;margin:0 10px;display:inline-block;border:1px solid #ededed;border-radius:5px}p.toc li,p.toc ul{list-style-type:none}p.toc li{width:100%;padding:0;overflow:hidden}p.toc li a::after{content:"."}p.toc li a:before{content:"• "}p.toc h5{text-transform:uppercase}p.toc .title{float:left;padding-right:3px}p.toc .number{margin:0;float:right;padding-left:3px;background:#fff;display:none}input.task-list-item{margin-left:-1.62em}.markdown{font-family:"Hiragino Sans GB","Microsoft YaHei",STHeiti,SimSun,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",'Segoe UI',AppleSDGothicNeo-Medium,'Malgun Gothic',Verdana,Tahoma,sans-serif;padding:20px}.markdown a{text-decoration:none;vertical-align:baseline}.markdown a:hover{text-decoration:underline}.markdown h1{font-size:2.2em;font-weight:700;margin:1.5em 0 1em}.markdown h2{font-size:1.8em;font-weight:700;margin:1.275em 0 .85em}.markdown h3{font-size:1.6em;font-weight:700;margin:1.125em 0 .75em}.markdown h4{font-size:1.4em;font-weight:700;margin:.99em 0 .66em}.markdown h5{font-size:1.2em;font-weight:700;margin:.855em 0 .57em}.markdown h6{font-size:1em;font-weight:700;margin:.75em 0 .5em}.markdown h1+p,.markdown h1:first-child,.markdown h2+p,.markdown h2:first-child,.markdown h3+p,.markdown h3:first-child,.markdown h4+p,.markdown h4:first-child,.markdown h5+p,.markdown h5:first-child,.markdown h6+p,.markdown h6:first-child{margin-top:0}.markdown hr{border:1px solid #ccc}.markdown p{margin:1em 0;word-wrap:break-word}.markdown ol{list-style-type:decimal}.markdown li{display:list-item;line-height:1.4em}.markdown blockquote{margin:1em 20px}.markdown blockquote>:first-child{margin-top:0}.markdown blockquote>:last-child{margin-bottom:0}.markdown blockquote cite:before{content:'\2014 \00A0'}.markdown .code{border-radius:3px;word-wrap:break-word}.markdown pre{border-radius:3px;word-wrap:break-word;border:1px solid #ccc;overflow:auto;padding:.5em}.markdown pre code{border:0;display:block}.markdown pre>code{font-family:Consolas,Inconsolata,Courier,monospace;font-weight:700;white-space:pre;margin:0}.markdown code{border-radius:3px;word-wrap:break-word;border:1px solid #ccc;padding:0 5px;margin:0 2px}.markdown img{max-width:100%}.markdown mark{color:#000;background-color:#fcf8e3}.markdown table{padding:0;border-collapse:collapse;border-spacing:0;margin-bottom:16px}.markdown table tr td,.markdown table tr th{border:1px solid #ccc;margin:0;padding:6px 13px}.markdown table tr th{font-weight:700}.markdown table tr th>:first-child{margin-top:0}.markdown table tr th>:last-child{margin-bottom:0}.markdown table tr td>:first-child{margin-top:0}.markdown table tr td>:last-child{margin-bottom:0}.solarized-light{padding:20px;color:#737373;font-size:15px;background:#fdf6e3;-webkit-font-smoothing:antialiased}.solarized-light a{color:#1e6ea7}.solarized-light a:hover{color:#268bd2}.solarized-light h1,.solarized-light h2,.solarized-light h3,.solarized-light h4,.solarized-light h5{color:#b58900}.solarized-light h2{border-bottom:1px solid #f6d784;line-height:1.7em}.solarized-light h6{color:#9c7600}.solarized-light hr{border:1px solid #fae7b3}.solarized-light pre>code{font-size:.9em}.solarized-light blockquote{border-left:4px solid #fae7b3;padding:0 15px;font-style:italic}.solarized-light table{background-color:#fdf4dd}.solarized-light table tr td,.solarized-light table tr th{border:1px solid #fae7b3}.solarized-light table tr:nth-child(2n){background-color:#fef8ea}.hljs{display:block;overflow-x:auto;padding:.5em;background:#fdf6e3;color:#657b83;-webkit-text-size-adjust:none}.diff .hljs-header,.hljs-comment,.hljs-doctype,.hljs-javadoc,.hljs-pi,.lisp .hljs-string{color:#93a1a1}.css .hljs-tag,.hljs-addition,.hljs-keyword,.hljs-request,.hljs-status,.hljs-winutils,.method,.nginx .hljs-title{color:#859900}.hljs-command,.hljs-dartdoc,.hljs-hexcolor,.hljs-link_url,.hljs-number,.hljs-phpdoc,.hljs-regexp,.hljs-rules .hljs-value,.hljs-string,.hljs-tag .hljs-value,.tex .hljs-formula{color:#2aa198}.css .hljs-function,.hljs-built_in,.hljs-chunk,.hljs-decorator,.hljs-id,.hljs-identifier,.hljs-localvars,.hljs-title,.vhdl .hljs-literal{color:#268bd2}.hljs-attribute,.hljs-class .hljs-title,.hljs-constant,.hljs-link_reference,.hljs-parent,.hljs-type,.hljs-variable,.lisp .hljs-body,.smalltalk .hljs-number{color:#b58900}.css .hljs-pseudo,.diff .hljs-change,.hljs-attr_selector,.hljs-cdata,.hljs-header,.hljs-pragma,.hljs-preprocessor,.hljs-preprocessor .hljs-keyword,.hljs-shebang,.hljs-special,.hljs-subst,.hljs-symbol,.hljs-symbol .hljs-string{color:#cb4b16}.hljs-deletion,.hljs-important{color:#dc322f}.hljs-link_label{color:#6c71c4}.tex .hljs-formula{background:#eee8d5}.MathJax_Hover_Frame{border-radius:.25em;-webkit-border-radius:.25em;-moz-border-radius:.25em;-khtml-border-radius:.25em;box-shadow:0 0 15px #83A;-webkit-box-shadow:0 0 15px #83A;-moz-box-shadow:0 0 15px #83A;-khtml-box-shadow:0 0 15px #83A;border:1px solid #A6D!important;display:inline-block;position:absolute}.MathJax_Hover_Arrow{position:absolute;width:15px;height:11px;cursor:pointer}#MathJax_About{position:fixed;left:50%;width:auto;text-align:center;border:3px outset;padding:1em 2em;background-color:#DDD;color:#000;cursor:default;font-family:message-box;font-size:120%;font-style:normal;text-indent:0;text-transform:none;line-height:normal;letter-spacing:normal;word-spacing:normal;word-wrap:normal;white-space:nowrap;float:none;z-index:201;border-radius:15px;-webkit-border-radius:15px;-moz-border-radius:15px;-khtml-border-radius:15px;box-shadow:0 10px 20px gray;-webkit-box-shadow:0 10px 20px gray;-moz-box-shadow:0 10px 20px gray;-khtml-box-shadow:0 10px 20px gray;filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}.MathJax_Menu{position:absolute;background-color:#fff;color:#000;width:auto;padding:2px;border:1px solid #CCC;margin:0;cursor:default;font:menu;text-align:left;text-indent:0;text-transform:none;line-height:normal;letter-spacing:normal;word-spacing:normal;word-wrap:normal;white-space:nowrap;float:none;z-index:201;box-shadow:0 10px 20px gray;-webkit-box-shadow:0 10px 20px gray;-moz-box-shadow:0 10px 20px gray;-khtml-box-shadow:0 10px 20px gray;filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}.MathJax_MenuItem{padding:2px 2em;background:0 0}.MathJax_MenuArrow{position:absolute;right:.5em;color:#666}.MathJax_MenuActive .MathJax_MenuArrow{color:#fff}.MathJax_MenuArrow.RTL{left:.5em;right:auto}.MathJax_MenuCheck{position:absolute;left:.7em}.MathJax_MenuCheck.RTL{right:.7em;left:auto}.MathJax_MenuRadioCheck{position:absolute;left:1em}.MathJax_MenuRadioCheck.RTL{right:1em;left:auto}.MathJax_MenuLabel{padding:2px 2em 4px 1.33em;font-style:italic}.MathJax_MenuRule{border-top:1px solid #CCC;margin:4px 1px 0}.MathJax_MenuDisabled{color:GrayText}.MathJax_MenuActive{background-color:Highlight;color:HighlightText}.MathJax_Menu_Close{position:absolute;width:31px;height:31px;top:-15px;left:-15px}#MathJax_Zoom{position:absolute;background-color:#F0F0F0;overflow:auto;display:block;z-index:301;padding:.5em;border:1px solid #000;margin:0;font-weight:400;font-style:normal;text-align:left;text-indent:0;text-transform:none;line-height:normal;letter-spacing:normal;word-spacing:normal;word-wrap:normal;white-space:nowrap;float:none;box-shadow:5px 5px 15px #AAA;-webkit-box-shadow:5px 5px 15px #AAA;-moz-box-shadow:5px 5px 15px #AAA;-khtml-box-shadow:5px 5px 15px #AAA;filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}#MathJax_ZoomOverlay{position:absolute;left:0;top:0;z-index:300;display:inline-block;width:100%;height:100%;border:0;padding:0;margin:0;background-color:#fff;opacity:0;filter:alpha(opacity=0)}#MathJax_ZoomFrame{position:relative;display:inline-block;height:0;width:0}#MathJax_ZoomEventTrap{position:absolute;left:0;top:0;z-index:302;display:inline-block;border:0;padding:0;margin:0;background-color:#fff;opacity:0;filter:alpha(opacity=0)}.MathJax_Preview{color:#888}#MathJax_Message{position:fixed;left:1px;bottom:2px;background-color:#E6E6E6;border:1px solid #959595;margin:0;padding:2px 8px;z-index:102;color:#000;font-size:80%;width:auto;white-space:nowrap}#MathJax_MSIE_Frame{position:absolute;top:0;left:0;width:0;z-index:101;border:0;margin:0;padding:0}.MathJax_Error{color:#C00;font-style:italic}footer{position:fixed;font-size:.8em;text-align:right;bottom:0;margin-left:-25px;height:20px;width:100%}</style>
+</head>
+<body class="markdown solarized-light">
+<h1 id="**mysql-索引-（innodb)**"><a name="**mysql-索引-（innodb)**" href="#**mysql-索引-（innodb)**"></a><strong>MySQL 索引 （InnoDB)</strong></h1><ul>
+<li><h3 id="mysql-的索引本质上就是一种数据结构，目标是高效的获取数据。-作用类似于一本书的简介，或者一本字典的索引"><a name="mysql-的索引本质上就是一种数据结构，目标是高效的获取数据。-作用类似于一本书的简介，或者一本字典的索引" href="#mysql-的索引本质上就是一种数据结构，目标是高效的获取数据。-作用类似于一本书的简介，或者一本字典的索引"></a>MySQL 的索引本质上就是一种数据结构，目标是高效的获取数据。 作用类似于一本书的简介，或者一本字典的索引</h3>
+</li><li><h3 id="以空间换时间，以损耗写时候的性能换取读时候的性能"><a name="以空间换时间，以损耗写时候的性能换取读时候的性能" href="#以空间换时间，以损耗写时候的性能换取读时候的性能"></a>以空间换时间，以损耗写时候的性能换取读时候的性能</h3>
+</li><li><h3 id="索引是在存储引擎层面实现的，不是在mysql-server层面实现的"><a name="索引是在存储引擎层面实现的，不是在mysql-server层面实现的" href="#索引是在存储引擎层面实现的，不是在mysql-server层面实现的"></a>索引是在存储引擎层面实现的，不是在MySQL Server层面实现的</h3>
+</li><li><h3 id="不是所有的存储引擎都支持所有的索引类型。即使多个存储引擎支持某一索引类型，它们的实现和行为也可能有所差别"><a name="不是所有的存储引擎都支持所有的索引类型。即使多个存储引擎支持某一索引类型，它们的实现和行为也可能有所差别" href="#不是所有的存储引擎都支持所有的索引类型。即使多个存储引擎支持某一索引类型，它们的实现和行为也可能有所差别"></a>不是所有的存储引擎都支持所有的索引类型。即使多个存储引擎支持某一索引类型，它们的实现和行为也可能有所差别</h3>
+</li><li><h3 id="一次查询可能用到多个索引-（index-merge)"><a name="一次查询可能用到多个索引-（index-merge)" href="#一次查询可能用到多个索引-（index-merge)"></a>一次查询可能用到多个索引 （index merge)</h3>
+</li></ul><h2 id="**-mysql架构-**"><a name="**-mysql架构-**" href="#**-mysql架构-**"></a><strong> MySQL架构 </strong></h2><p><img src="http://i1.piimg.com/588926/9554a2c9e4482912.png" alt=""></p><p><img src="http://i1.piimg.com/588926/faead437f0f52e34.png" alt=""></p><ul>
+<li><h5 id="第一层不是mysql特有的，大多数基于网络的客户端/服务器的工具或者服务都有类似的架构。比如连接管理、授权认证、安全。"><a name="第一层不是mysql特有的，大多数基于网络的客户端/服务器的工具或者服务都有类似的架构。比如连接管理、授权认证、安全。" href="#第一层不是mysql特有的，大多数基于网络的客户端/服务器的工具或者服务都有类似的架构。比如连接管理、授权认证、安全。"></a>第一层不是Mysql特有的，大多数基于网络的客户端/服务器的工具或者服务都有类似的架构。比如连接管理、授权认证、安全。</h5>
+</li><li><h5 id="==-第二层是mysql独有的部分，大多数mysql的核心服务功能都在这一层，包括查询解析、分析、优化、缓存及所有内置函数（比如日期、时间、数学和加密），所有的跨存储引擎的功能都在这一层（比如存储过程、触发器、视图等）。=="><a name="==-第二层是mysql独有的部分，大多数mysql的核心服务功能都在这一层，包括查询解析、分析、优化、缓存及所有内置函数（比如日期、时间、数学和加密），所有的跨存储引擎的功能都在这一层（比如存储过程、触发器、视图等）。==" href="#==-第二层是mysql独有的部分，大多数mysql的核心服务功能都在这一层，包括查询解析、分析、优化、缓存及所有内置函数（比如日期、时间、数学和加密），所有的跨存储引擎的功能都在这一层（比如存储过程、触发器、视图等）。=="></a><mark> 第二层是Mysql独有的部分，大多数Mysql的核心服务功能都在这一层，包括查询解析、分析、优化、缓存及所有内置函数（比如日期、时间、数学和加密），所有的跨存储引擎的功能都在这一层（比如存储过程、触发器、视图等）。</mark></h5>
+</li><li><h5 id="第三层包含了存储引擎，负责mysql的存储与提取。服务器通过api与存储引擎进行通信，这些接口屏蔽了不同存储引擎之间的差异，使得这些差异对上层的查询过程透明。存储引擎包含几十个底层函数，用于执行诸如-‘开始一个事物’-或者-‘根据主键提取一行数据’等操作。但存储引擎不会解析sql，不同的存储引擎也不会互相通信，而只是简单的响应上层的请求。"><a name="第三层包含了存储引擎，负责mysql的存储与提取。服务器通过api与存储引擎进行通信，这些接口屏蔽了不同存储引擎之间的差异，使得这些差异对上层的查询过程透明。存储引擎包含几十个底层函数，用于执行诸如-‘开始一个事物’-或者-‘根据主键提取一行数据’等操作。但存储引擎不会解析sql，不同的存储引擎也不会互相通信，而只是简单的响应上层的请求。" href="#第三层包含了存储引擎，负责mysql的存储与提取。服务器通过api与存储引擎进行通信，这些接口屏蔽了不同存储引擎之间的差异，使得这些差异对上层的查询过程透明。存储引擎包含几十个底层函数，用于执行诸如-‘开始一个事物’-或者-‘根据主键提取一行数据’等操作。但存储引擎不会解析sql，不同的存储引擎也不会互相通信，而只是简单的响应上层的请求。"></a>第三层包含了存储引擎，负责Mysql的存储与提取。服务器通过Api与存储引擎进行通信，这些接口屏蔽了不同存储引擎之间的差异，使得这些差异对上层的查询过程透明。存储引擎包含几十个底层函数，用于执行诸如  ‘开始一个事物’ 或者 ‘根据主键提取一行数据’等操作。但存储引擎不会解析SQL，不同的存储引擎也不会互相通信，而只是简单的响应上层的请求。</h5>
+</li></ul><h2 id="**sql-语句的优化和执行流程**"><a name="**sql-语句的优化和执行流程**" href="#**sql-语句的优化和执行流程**"></a><strong>SQL 语句的优化和执行流程</strong></h2><ul>
+<li><h5 id="mysql会解析查询，并创建内部数据结构（解析树），然后对其进行各种优化，包括重写查询、决定表的读写顺序，以及选择合适的索引"><a name="mysql会解析查询，并创建内部数据结构（解析树），然后对其进行各种优化，包括重写查询、决定表的读写顺序，以及选择合适的索引" href="#mysql会解析查询，并创建内部数据结构（解析树），然后对其进行各种优化，包括重写查询、决定表的读写顺序，以及选择合适的索引"></a>Mysql会解析查询，并创建内部数据结构（解析树），然后对其进行各种优化，包括重写查询、决定表的读写顺序，以及选择合适的索引</h5>
+</li><li><h5 id="用户通过特殊的关键字提示优化器，影响他的决策过程(eg:force-index(xxx),use-index(xxx),-ignore-index(xxx))"><a name="用户通过特殊的关键字提示优化器，影响他的决策过程(eg:force-index(xxx),use-index(xxx),-ignore-index(xxx))" href="#用户通过特殊的关键字提示优化器，影响他的决策过程(eg:force-index(xxx),use-index(xxx),-ignore-index(xxx))"></a>用户通过特殊的关键字提示优化器，影响他的决策过程(eg:force index(XXX),use index(XXX), ignore index(XXX))</h5>
+</li><li><h5 id="优化器并不关心数据表使用的什么存储引擎，但存储引擎对于优化查询是有影响的。优化器会请求存储引擎提供容量或者某个操作的具体开销信息，以及表数据的统计信息。"><a name="优化器并不关心数据表使用的什么存储引擎，但存储引擎对于优化查询是有影响的。优化器会请求存储引擎提供容量或者某个操作的具体开销信息，以及表数据的统计信息。" href="#优化器并不关心数据表使用的什么存储引擎，但存储引擎对于优化查询是有影响的。优化器会请求存储引擎提供容量或者某个操作的具体开销信息，以及表数据的统计信息。"></a>优化器并不关心数据表使用的什么存储引擎，但存储引擎对于优化查询是有影响的。优化器会请求存储引擎提供容量或者某个操作的具体开销信息，以及表数据的统计信息。</h5>
+</li><li><h5 id="对于select语句，在解析查询之前，服务器会先检查查询缓存，如果命中缓存，服务器就不会进行查询解析、优化和执行的整个过程，而是直接返回查询缓存中的内容。"><a name="对于select语句，在解析查询之前，服务器会先检查查询缓存，如果命中缓存，服务器就不会进行查询解析、优化和执行的整个过程，而是直接返回查询缓存中的内容。" href="#对于select语句，在解析查询之前，服务器会先检查查询缓存，如果命中缓存，服务器就不会进行查询解析、优化和执行的整个过程，而是直接返回查询缓存中的内容。"></a>对于SELECT语句，在解析查询之前，服务器会先检查查询缓存，如果命中缓存，服务器就不会进行查询解析、优化和执行的整个过程，而是直接返回查询缓存中的内容。</h5>
+<blockquote>
+<h5 id="mysql将缓存存放在一个引用表（不要理解成table，可以认为是类似于hashmap的数据结构），通过一个哈希值索引，这个哈希值通过查询本身、当前要查询的数据库、客户端协议版本号等一些可能影响结果的信息计算得来。所以两个查询在任何字符上的不同（例如：空格、注释），都会导致缓存不会命中。"><a name="mysql将缓存存放在一个引用表（不要理解成table，可以认为是类似于hashmap的数据结构），通过一个哈希值索引，这个哈希值通过查询本身、当前要查询的数据库、客户端协议版本号等一些可能影响结果的信息计算得来。所以两个查询在任何字符上的不同（例如：空格、注释），都会导致缓存不会命中。" href="#mysql将缓存存放在一个引用表（不要理解成table，可以认为是类似于hashmap的数据结构），通过一个哈希值索引，这个哈希值通过查询本身、当前要查询的数据库、客户端协议版本号等一些可能影响结果的信息计算得来。所以两个查询在任何字符上的不同（例如：空格、注释），都会导致缓存不会命中。"></a>MySQL将缓存存放在一个引用表（不要理解成table，可以认为是类似于HashMap的数据结构），通过一个哈希值索引，这个哈希值通过查询本身、当前要查询的数据库、客户端协议版本号等一些可能影响结果的信息计算得来。所以两个查询在任何字符上的不同（例如：空格、注释），都会导致缓存不会命中。</h5>
+</blockquote>
+</li></ul><p><img src="http://i2.muimg.com/588926/c9b60373f4f227b2.png" alt=""></p><h2 id="索引的分类"><a name="索引的分类" href="#索引的分类"></a>索引的分类</h2><h3 id="数据结构的角度"><a name="数据结构的角度" href="#数据结构的角度"></a>数据结构的角度</h3><ul>
+<li><h4 id="b+-树索引-（innodb）-b+树介绍-->-http://git.darcytech.com/base/tech/wikis/mysql-btree"><a name="b+-树索引-（innodb）-b+树介绍-->-http://git.darcytech.com/base/tech/wikis/mysql-btree" href="#b+-树索引-（innodb）-b+树介绍--&gt;-http://git.darcytech.com/base/tech/wikis/mysql-btree"></a>B+ 树索引 （InnoDB）  B+树介绍—&gt; <a href="http://git.darcytech.com/base/tech/wikis/mysql-btree">http://git.darcytech.com/base/tech/wikis/mysql-btree</a></h4>
+</li><li><h4 id="hash-索引-(memory)"><a name="hash-索引-(memory)" href="#hash-索引-(memory)"></a>hash 索引 (Memory)</h4>
+</li><li><h4 id="fulltext-索引（myisam,-innodb)"><a name="fulltext-索引（myisam,-innodb)" href="#fulltext-索引（myisam,-innodb)"></a>FUllTEXT 索引（MyISAM, InnoDB)</h4>
+</li><li><h4 id="r-tree-索引（myisam)"><a name="r-tree-索引（myisam)" href="#r-tree-索引（myisam)"></a>R-tree 索引（MyISAM)</h4>
+</li></ul><h3 id="逻辑的角度"><a name="逻辑的角度" href="#逻辑的角度"></a>逻辑的角度</h3><ul>
+<li><h4 id="主键索引"><a name="主键索引" href="#主键索引"></a>主键索引</h4>
+<ul>
+<li><h5 id="主键索引是一种特殊的唯一索引，不能为null。每个innodb引擎的表都会有一个主键索引，即使没有显示声明"><a name="主键索引是一种特殊的唯一索引，不能为null。每个innodb引擎的表都会有一个主键索引，即使没有显示声明" href="#主键索引是一种特殊的唯一索引，不能为null。每个innodb引擎的表都会有一个主键索引，即使没有显示声明"></a>主键索引是一种特殊的唯一索引，不能为NULL。每个InnoDB引擎的表都会有一个主键索引，即使没有显示声明</h5>
+</li></ul>
+</li><li><h4 id="普通索引（单列索引）"><a name="普通索引（单列索引）" href="#普通索引（单列索引）"></a>普通索引（单列索引）</h4>
+<ul>
+<li><h5 id="对表中一个字段进行索引"><a name="对表中一个字段进行索引" href="#对表中一个字段进行索引"></a>对表中一个字段进行索引</h5>
+</li></ul>
+</li><li><h4 id="复合索引（多列索引）"><a name="复合索引（多列索引）" href="#复合索引（多列索引）"></a>复合索引（多列索引）</h4>
+<ul>
+<li><h5 id="复合索引指在多个字段上创建的索引，查询时要遵守-==最左前缀==-原则"><a name="复合索引指在多个字段上创建的索引，查询时要遵守-==最左前缀==-原则" href="#复合索引指在多个字段上创建的索引，查询时要遵守-==最左前缀==-原则"></a>复合索引指在多个字段上创建的索引，查询时要遵守 <mark>最左前缀</mark> 原则</h5>
+</li></ul>
+</li><li><h4 id="唯一索引"><a name="唯一索引" href="#唯一索引"></a>唯一索引</h4>
+<ul>
+<li><h5 id="可以是单列索引也可以是多列索引，可以为null。-但是索引的列必须是唯一的，可以用来在数据库层面确保数据的唯一性"><a name="可以是单列索引也可以是多列索引，可以为null。-但是索引的列必须是唯一的，可以用来在数据库层面确保数据的唯一性" href="#可以是单列索引也可以是多列索引，可以为null。-但是索引的列必须是唯一的，可以用来在数据库层面确保数据的唯一性"></a>可以是单列索引也可以是多列索引，可以为NULL。 但是索引的列必须是唯一的，可以用来在数据库层面确保数据的唯一性</h5>
+</li></ul>
+</li></ul><h3 id="物理存储的角度"><a name="物理存储的角度" href="#物理存储的角度"></a>物理存储的角度</h3><ul>
+<li><h4 id="聚簇索引（clustered-index)"><a name="聚簇索引（clustered-index)" href="#聚簇索引（clustered-index)"></a>聚簇索引（clustered index)</h4>
+<ul>
+<li><h5 id="索引项的数据顺序与表中记录的顺序一致，索引的叶子节点即包含了相关的行的数据。-每张表只能有一个聚簇索引，聚簇索引不能随便指定。无序的聚簇索引在插入更新时会造成额外的页分裂（page-split),-会造成严重的性能影响。innodb自增主键索引便是聚簇索引，每个innodb都有且仅有一个聚簇索引，因为真实数据的物理顺序只能有一种"><a name="索引项的数据顺序与表中记录的顺序一致，索引的叶子节点即包含了相关的行的数据。-每张表只能有一个聚簇索引，聚簇索引不能随便指定。无序的聚簇索引在插入更新时会造成额外的页分裂（page-split),-会造成严重的性能影响。innodb自增主键索引便是聚簇索引，每个innodb都有且仅有一个聚簇索引，因为真实数据的物理顺序只能有一种" href="#索引项的数据顺序与表中记录的顺序一致，索引的叶子节点即包含了相关的行的数据。-每张表只能有一个聚簇索引，聚簇索引不能随便指定。无序的聚簇索引在插入更新时会造成额外的页分裂（page-split),-会造成严重的性能影响。innodb自增主键索引便是聚簇索引，每个innodb都有且仅有一个聚簇索引，因为真实数据的物理顺序只能有一种"></a>索引项的数据顺序与表中记录的顺序一致，索引的叶子节点即包含了相关的行的数据。 每张表只能有一个聚簇索引，聚簇索引不能随便指定。无序的聚簇索引在插入更新时会造成额外的页分裂（page split), 会造成严重的性能影响。InnoDB自增主键索引便是聚簇索引，每个InnoDB都有且仅有一个聚簇索引，因为真实数据的物理顺序只能有一种</h5>
+</li></ul>
+</li></ul><ul>
+<li><h4 id="非聚簇索引（non-clustered-index,-二级索引，辅助索引）"><a name="非聚簇索引（non-clustered-index,-二级索引，辅助索引）" href="#非聚簇索引（non-clustered-index,-二级索引，辅助索引）"></a>非聚簇索引（non-clustered index, 二级索引，辅助索引）</h4>
+<ul>
+<li><h5 id="表数据和索引是分开存储的，每个二级索引当中的叶子节点都包含相关行的主键值（聚簇索引），而不是相关行的磁盘物理地址，所以每个二级索引都是复合索引。-对二级索引进行查询要额外多一次io（第一次通过二级索引找到主键，然后通过主键找到行数据）。-这么做的好处便是减少了行移动或数据页分裂时二级索引的维护工作，~~但会让二级索引占用更多的空间，尤其是在主键值变得越来越大的时候~~"><a name="表数据和索引是分开存储的，每个二级索引当中的叶子节点都包含相关行的主键值（聚簇索引），而不是相关行的磁盘物理地址，所以每个二级索引都是复合索引。-对二级索引进行查询要额外多一次io（第一次通过二级索引找到主键，然后通过主键找到行数据）。-这么做的好处便是减少了行移动或数据页分裂时二级索引的维护工作，~~但会让二级索引占用更多的空间，尤其是在主键值变得越来越大的时候~~" href="#表数据和索引是分开存储的，每个二级索引当中的叶子节点都包含相关行的主键值（聚簇索引），而不是相关行的磁盘物理地址，所以每个二级索引都是复合索引。-对二级索引进行查询要额外多一次io（第一次通过二级索引找到主键，然后通过主键找到行数据）。-这么做的好处便是减少了行移动或数据页分裂时二级索引的维护工作，~~但会让二级索引占用更多的空间，尤其是在主键值变得越来越大的时候~~"></a>表数据和索引是分开存储的，每个二级索引当中的叶子节点都包含相关行的主键值（聚簇索引），而不是相关行的磁盘物理地址，所以每个二级索引都是复合索引。 对二级索引进行查询要额外多一次IO（第一次通过二级索引找到主键，然后通过主键找到行数据）。  这么做的好处便是减少了行移动或数据页分裂时二级索引的维护工作，<del>但会让二级索引占用更多的空间，尤其是在主键值变得越来越大的时候</del></h5>
+</li></ul>
+</li><li><h4 id="聚簇索引和非聚簇索引的对比图如下："><a name="聚簇索引和非聚簇索引的对比图如下：" href="#聚簇索引和非聚簇索引的对比图如下："></a>聚簇索引和非聚簇索引的对比图如下：</h4>
+</li></ul><p><img src="http://i4.buimg.com/567571/fd4af6a492d60a18.png" alt="clustered-index-vs-nonclustered-index"></p><hr class="page"><h2 id="索引区分度"><a name="索引区分度" href="#索引区分度"></a>索引区分度</h2><h4 id="索引的区分度越好，选择性越高，效率最好。"><a name="索引的区分度越好，选择性越高，效率最好。" href="#索引的区分度越好，选择性越高，效率最好。"></a>索引的区分度越好，选择性越高，效率最好。</h4><h4 id="区分度计算公式："><a name="区分度计算公式：" href="#区分度计算公式："></a>区分度计算公式：</h4><ul>
+<li><h4 id="```-选择性-=-索引中不同值的数目/表中总记录数-=-select-count(distinct-column)/count(*)-from-t-```"><a name="```-选择性-=-索引中不同值的数目/表中总记录数-=-select-count(distinct-column)/count(*)-from-t-```" href="#```-选择性-=-索引中不同值的数目/表中总记录数-=-select-count(distinct-column)/count(*)-from-t-```"></a><code>选择性 = 索引中不同值的数目/表中总记录数 = select count(distinct column)/count(*) from t</code></h4>
+</li><li><h4 id="```-选择性范围:-(0,1]，-为1时选择性最好-```"><a name="```-选择性范围:-(0,1]，-为1时选择性最好-```" href="#```-选择性范围:-(0,1]，-为1时选择性最好-```"></a><code>选择性范围: (0,1]， 为1时选择性最好</code></h4>
+</li></ul><h2 id="前缀索引(在长字段上建立索引)"><a name="前缀索引(在长字段上建立索引)" href="#前缀索引(在长字段上建立索引)"></a>前缀索引(在长字段上建立索引)</h2><ul>
+<li><h5 id="前缀索引是用列的前缀代替整个列作为索引key，当前缀长度合适时，可以做到既使得前缀索引的选择性接近全列索引，同时因为索引key变短而减少了索引文件的大小和维护开销"><a name="前缀索引是用列的前缀代替整个列作为索引key，当前缀长度合适时，可以做到既使得前缀索引的选择性接近全列索引，同时因为索引key变短而减少了索引文件的大小和维护开销" href="#前缀索引是用列的前缀代替整个列作为索引key，当前缀长度合适时，可以做到既使得前缀索引的选择性接近全列索引，同时因为索引key变短而减少了索引文件的大小和维护开销"></a>前缀索引是用列的前缀代替整个列作为索引key，当前缀长度合适时，可以做到既使得前缀索引的选择性接近全列索引，同时因为索引key变短而减少了索引文件的大小和维护开销</h5>
+</li></ul><pre class="sql hljs"><code class="sql" data-origin="<pre><code class=&quot;sql&quot;>
+CREATE TABLE `city_demo` (`city` VARCHAR(50) NOT NULL) COLLATE='utf8_general_ci'ENGINE=InnoDB;
+
+
+
+SELECT
+
+    COUNT(DISTINCT city) AS distinct_city_count,
+
+    COUNT(1) AS total_city_count,
+
+    COUNT(DISTINCT city) / COUNT(1) AS selectivity
+
+FROM
+
+    sakila.city_demo;
+
+
+
++---------------------+------------------+------------+
+
+| distinct_city_count | total_city_count | selectivity |
+
++---------------------+------------------+------------+
+
+| 599                 | 19200            | 0.0312      |
+
++---------------------+------------------+------------+
+
+
+
+SELECT
+
+    COUNT(DISTINCT LEFT(city, 3)) / COUNT(*) AS sel3,
+
+    COUNT(DISTINCT LEFT(city, 4)) / COUNT(*) AS sel4,
+
+    COUNT(DISTINCT LEFT(city, 5)) / COUNT(*) AS sel5,
+
+    COUNT(DISTINCT LEFT(city, 6)) / COUNT(*) AS sel6,
+
+    COUNT(DISTINCT LEFT(city, 7)) / COUNT(*) AS sel7
+
+FROM
+
+    sakila.city_demo;
+
++------------+-----------+------------+-----------+------------+
+
+| sel3       | sel4      | sel5       | sel6      |   sel7     |
+
++------------+-----------+------------+-----------+------------+
+
+| 0.0239     | 0.0293    | 0.0305     | 0.0309    |   0.0310   |
+
++------------+-----------+------------+-----------+------------+
+</code></pre>">
+<span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-string">`city_demo`</span> (<span class="hljs-string">`city`</span> <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">COLLATE</span>=<span class="hljs-string">'utf8_general_ci'</span><span class="hljs-keyword">ENGINE</span>=<span class="hljs-keyword">InnoDB</span>;</span>
+
+
+
+<span class="hljs-operator"><span class="hljs-keyword">SELECT</span>
+
+    <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> city) <span class="hljs-keyword">AS</span> distinct_city_count,
+
+    <span class="hljs-keyword">COUNT</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">AS</span> total_city_count,
+
+    <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> city) / <span class="hljs-keyword">COUNT</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">AS</span> selectivity
+
+<span class="hljs-keyword">FROM</span>
+
+    sakila.city_demo;</span>
+
+
+
++<span class="hljs-comment">---------------------+------------------+------------+</span>
+
+| distinct_city_count | total_city_count | selectivity |
+
++<span class="hljs-comment">---------------------+------------------+------------+</span>
+
+| 599                 | 19200            | 0.0312      |
+
++<span class="hljs-comment">---------------------+------------------+------------+</span>
+
+
+
+<span class="hljs-operator"><span class="hljs-keyword">SELECT</span>
+
+    <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> <span class="hljs-keyword">LEFT</span>(city, <span class="hljs-number">3</span>)) / <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> sel3,
+
+    <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> <span class="hljs-keyword">LEFT</span>(city, <span class="hljs-number">4</span>)) / <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> sel4,
+
+    <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> <span class="hljs-keyword">LEFT</span>(city, <span class="hljs-number">5</span>)) / <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> sel5,
+
+    <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> <span class="hljs-keyword">LEFT</span>(city, <span class="hljs-number">6</span>)) / <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> sel6,
+
+    <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> <span class="hljs-keyword">LEFT</span>(city, <span class="hljs-number">7</span>)) / <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">AS</span> sel7
+
+<span class="hljs-keyword">FROM</span>
+
+    sakila.city_demo;</span>
+
++<span class="hljs-comment">------------+-----------+------------+-----------+------------+</span>
+
+| sel3       | sel4      | sel5       | sel6      |   sel7     |
+
++<span class="hljs-comment">------------+-----------+------------+-----------+------------+</span>
+
+| 0.0239     | 0.0293    | 0.0305     | 0.0309    |   0.0310   |
+
++<span class="hljs-comment">------------+-----------+------------+-----------+------------+</span>
+</code></pre><h2 id="覆盖索引(covering-index，三星索引)"><a name="覆盖索引(covering-index，三星索引)" href="#覆盖索引(covering-index，三星索引)"></a>覆盖索引(covering index，三星索引)</h2><ul>
+<li><h5 id="如果索引包含满足查询的所有列，就称为覆盖索引"><a name="如果索引包含满足查询的所有列，就称为覆盖索引" href="#如果索引包含满足查询的所有列，就称为覆盖索引"></a>如果索引包含满足查询的所有列，就称为覆盖索引</h5>
+</li><li><h5 id="覆盖索引查询不需要回表操作，减少了很多的随机io操作"><a name="覆盖索引查询不需要回表操作，减少了很多的随机io操作" href="#覆盖索引查询不需要回表操作，减少了很多的随机io操作"></a>覆盖索引查询不需要回表操作，减少了很多的随机io操作</h5>
+</li><li><h5 id="对于innodb表来说，覆盖索引显得格外有用，因为innodb使用聚集索引组织数据，如果二级索引中包含查询所需的数据，就不再需要在聚集索引中查找了"><a name="对于innodb表来说，覆盖索引显得格外有用，因为innodb使用聚集索引组织数据，如果二级索引中包含查询所需的数据，就不再需要在聚集索引中查找了" href="#对于innodb表来说，覆盖索引显得格外有用，因为innodb使用聚集索引组织数据，如果二级索引中包含查询所需的数据，就不再需要在聚集索引中查找了"></a>对于InnoDB表来说，覆盖索引显得格外有用，因为InnoDB使用聚集索引组织数据，如果二级索引中包含查询所需的数据，就不再需要在聚集索引中查找了</h5>
+</li><li><h5 id="覆盖索引查询时除了索引本身的包含的列，还可以使用其默认的聚集索引列。-因为二级索引中的叶子节点中就包含了聚簇索引的主键值"><a name="覆盖索引查询时除了索引本身的包含的列，还可以使用其默认的聚集索引列。-因为二级索引中的叶子节点中就包含了聚簇索引的主键值" href="#覆盖索引查询时除了索引本身的包含的列，还可以使用其默认的聚集索引列。-因为二级索引中的叶子节点中就包含了聚簇索引的主键值"></a>覆盖索引查询时除了索引本身的包含的列，还可以使用其默认的聚集索引列。 因为二级索引中的叶子节点中就包含了聚簇索引的主键值</h5>
+</li><li><h5 id="explain-中extra-一栏显示-using-index"><a name="explain-中extra-一栏显示-using-index" href="#explain-中extra-一栏显示-using-index"></a>explain 中extra 一栏显示 using index</h5>
+</li></ul><pre class="sql hljs"><code class="sql" data-origin="<pre><code class=&quot;sql&quot;>
+show index from account_adjust;
+
++----------------+------------+-------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| Table          | Non_unique | Key_name                | Seq_in_index | Column_name  | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++----------------+------------+-------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| account_adjust |          0 | PRIMARY                 |            1 | id           | A         |        2160 |     NULL | NULL   |      | BTREE      |         |               |
+
+| account_adjust |          0 | uniq_aa_acid_ouid       |            1 | account_id   | A         |          90 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          0 | uniq_aa_acid_ouid       |            2 | outer_id     | A         |         720 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_aa_acode            |            1 | account_code | A         |          98 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_aa_created          |            1 | created      | A         |        2160 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_ac_aid_atype_amount |            1 | account_id   | A         |          90 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_ac_aid_atype_amount |            2 | adjust_type  | A         |         196 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_ac_aid_atype_amount |            3 | amount       | A         |        1080 |     NULL | NULL   | YES  | BTREE      |         |               |
+
++----------------+------------+-------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+8 rows in set (0.00 sec)
+
+
+
+
+
+EXPLAIN SELECT aa.amount FROM account_adjust aa WHERE aa.account_id = 60 AND aa.adjust_type = 'BUSINESS_ADJUST';
+
++----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+
+
+| id | select_type | table | type | possible_keys                             | key                     | key_len | ref         | rows | Extra                    |
+
++----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+
+
+|  1 | SIMPLE      | aa    | ref  | uniq_aa_acid_ouid,idx_ac_aid_atype_amount | idx_ac_aid_atype_amount | 773     | const,const |  295 | Using where; Using index |
+
++----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+
+
+1 row in set (0.01 sec)
+
+
+
+
+
+EXPLAIN SELECT aa.amount, aa.id FROM account_adjust aa WHERE aa.account_id = 60 AND aa.adjust_type = 'BUSINESS_ADJUST';
+
++----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+
+
+| id | select_type | table | type | possible_keys                             | key                     | key_len | ref         | rows | Extra                    |
+
++----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+
+
+|  1 | SIMPLE      | aa    | ref  | uniq_aa_acid_ouid,idx_ac_aid_atype_amount | idx_ac_aid_atype_amount | 773     | const,const |  295 | Using where; Using index |
+
++----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+
+
+1 row in set (0.01 sec)
+
+
+
+EXPLAIN SELECT * FROM account_adjust aa WHERE aa.account_id = 60 AND aa.adjust_type = 'BUSINESS_ADJUST';
+
++----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+-----------------------+
+
+| id | select_type | table | type | possible_keys                             | key                     | key_len | ref         | rows | Extra                 |
+
++----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+-----------------------+
+
+|  1 | SIMPLE      | aa    | ref  | uniq_aa_acid_ouid,idx_ac_aid_atype_amount | idx_ac_aid_atype_amount | 773     | const,const |  295 | Using index condition |
+
++----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+-----------------------+
+
+1 row in set (0.11 sec)
+</code></pre>">
+<span class="hljs-operator"><span class="hljs-keyword">show</span> <span class="hljs-keyword">index</span> <span class="hljs-keyword">from</span> account_adjust;</span>
+
++<span class="hljs-comment">----------------+------------+-------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| Table          | Non_unique | Key_name                | Seq_in_index | Column_name  | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++<span class="hljs-comment">----------------+------------+-------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| account_adjust |          0 | PRIMARY                 |            1 | id           | A         |        2160 |     NULL | NULL   |      | BTREE      |         |               |
+
+| account_adjust |          0 | uniq_aa_acid_ouid       |            1 | account_id   | A         |          90 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          0 | uniq_aa_acid_ouid       |            2 | outer_id     | A         |         720 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_aa_acode            |            1 | account_code | A         |          98 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_aa_created          |            1 | created      | A         |        2160 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_ac_aid_atype_amount |            1 | account_id   | A         |          90 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_ac_aid_atype_amount |            2 | adjust_type  | A         |         196 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| account_adjust |          1 | idx_ac_aid_atype_amount |            3 | amount       | A         |        1080 |     NULL | NULL   | YES  | BTREE      |         |               |
+
++<span class="hljs-comment">----------------+------------+-------------------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+8 rows in <span class="hljs-operator"><span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+
+
+
+
+
+<span class="hljs-keyword">EXPLAIN</span> <span class="hljs-keyword">SELECT</span> aa.amount <span class="hljs-keyword">FROM</span> account_adjust aa <span class="hljs-keyword">WHERE</span> aa.account_id = <span class="hljs-number">60</span> <span class="hljs-keyword">AND</span> aa.adjust_type = <span class="hljs-string">'BUSINESS_ADJUST'</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+</span>
+
+| id | select_type | table | type | possible_keys                             | key                     | key_len | ref         | rows | Extra                    |
+
++<span class="hljs-comment">----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+</span>
+
+|  1 | SIMPLE      | aa    | ref  | uniq_aa_acid_ouid,idx_ac_aid_atype_amount | idx_ac_aid_atype_amount | 773     | const,const |  295 | Using where; Using index |
+
++<span class="hljs-comment">----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+</span>
+
+1 row in <span class="hljs-operator"><span class="hljs-keyword">set</span> (<span class="hljs-number">0.01</span> sec)
+
+
+
+
+
+<span class="hljs-keyword">EXPLAIN</span> <span class="hljs-keyword">SELECT</span> aa.amount, aa.id <span class="hljs-keyword">FROM</span> account_adjust aa <span class="hljs-keyword">WHERE</span> aa.account_id = <span class="hljs-number">60</span> <span class="hljs-keyword">AND</span> aa.adjust_type = <span class="hljs-string">'BUSINESS_ADJUST'</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+</span>
+
+| id | select_type | table | type | possible_keys                             | key                     | key_len | ref         | rows | Extra                    |
+
++<span class="hljs-comment">----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+</span>
+
+|  1 | SIMPLE      | aa    | ref  | uniq_aa_acid_ouid,idx_ac_aid_atype_amount | idx_ac_aid_atype_amount | 773     | const,const |  295 | Using where; Using index |
+
++<span class="hljs-comment">----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+--------------------------+</span>
+
+1 row in <span class="hljs-operator"><span class="hljs-keyword">set</span> (<span class="hljs-number">0.01</span> sec)
+
+
+
+<span class="hljs-keyword">EXPLAIN</span> <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> account_adjust aa <span class="hljs-keyword">WHERE</span> aa.account_id = <span class="hljs-number">60</span> <span class="hljs-keyword">AND</span> aa.adjust_type = <span class="hljs-string">'BUSINESS_ADJUST'</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+-----------------------+</span>
+
+| id | select_type | table | type | possible_keys                             | key                     | key_len | ref         | rows | Extra                 |
+
++<span class="hljs-comment">----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+-----------------------+</span>
+
+|  1 | SIMPLE      | aa    | ref  | uniq_aa_acid_ouid,idx_ac_aid_atype_amount | idx_ac_aid_atype_amount | 773     | const,const |  295 | Using index condition |
+
++<span class="hljs-comment">----+-------------+-------+------+-------------------------------------------+-------------------------+---------+-------------+------+-----------------------+</span>
+
+1 row in <span class="hljs-operator"><span class="hljs-keyword">set</span> (<span class="hljs-number">0.11</span> sec)
+</span></code></pre><h2 id="回表"><a name="回表" href="#回表"></a>回表</h2><ul>
+<li><h5 id="在二级索引中找到相关数据后，还需要根据主键到聚簇索引中查找数据的过程就叫做回表"><a name="在二级索引中找到相关数据后，还需要根据主键到聚簇索引中查找数据的过程就叫做回表" href="#在二级索引中找到相关数据后，还需要根据主键到聚簇索引中查找数据的过程就叫做回表"></a>在二级索引中找到相关数据后，还需要根据主键到聚簇索引中查找数据的过程就叫做回表</h5>
+</li></ul><h2 id="最左原则"><a name="最左原则" href="#最左原则"></a>最左原则</h2><h4 id="使用复合多列索引时要符合最左匹配原则"><a name="使用复合多列索引时要符合最左匹配原则" href="#使用复合多列索引时要符合最左匹配原则"></a>使用复合多列索引时要符合最左匹配原则</h4><ul>
+<li><h5 id="如果有一个2列的索引(col1,col2),则已经对(col1)、(col1,col2)上建立了索引"><a name="如果有一个2列的索引(col1,col2),则已经对(col1)、(col1,col2)上建立了索引" href="#如果有一个2列的索引(col1,col2),则已经对(col1)、(col1,col2)上建立了索引"></a>如果有一个2列的索引(col1,col2),则已经对(col1)、(col1,col2)上建立了索引</h5>
+</li><li><h5 id="如果有一个3列索引(col1,col2,col3)，则已经对(col1)、(col1,col2)、(col1,col2,col3)上建立了索引"><a name="如果有一个3列索引(col1,col2,col3)，则已经对(col1)、(col1,col2)、(col1,col2,col3)上建立了索引" href="#如果有一个3列索引(col1,col2,col3)，则已经对(col1)、(col1,col2)、(col1,col2,col3)上建立了索引"></a>如果有一个3列索引(col1,col2,col3)，则已经对(col1)、(col1,col2)、(col1,col2,col3)上建立了索引</h5>
+</li><li><h5 id="b+树的数据项是复合的数据结构，b+树是按照从左到右的顺序来建立搜索树"><a name="b+树的数据项是复合的数据结构，b+树是按照从左到右的顺序来建立搜索树" href="#b+树的数据项是复合的数据结构，b+树是按照从左到右的顺序来建立搜索树"></a>b+树的数据项是复合的数据结构，b+树是按照从左到右的顺序来建立搜索树</h5>
+</li></ul><pre class="sql hljs"><code class="sql" data-origin="<pre><code class=&quot;sql&quot;>
+show index from action_record;
+
++---------------+------------+-----------------------------------------+--------------+----------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| Table         | Non_unique | Key_name                                | Seq_in_index | Column_name    | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++---------------+------------+-----------------------------------------+--------------+----------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| action_record |          0 | PRIMARY                                 |            1 | id             | A         |     1388978 |     NULL | NULL   |      | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_buyer_atime_success          |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_buyer_atime_success          |            2 | buyer_nick     | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_buyer_atime_success          |            3 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_buyer_atime_success          |            4 | success        | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tid_atime                    |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tid_atime                    |            2 | trade_id       | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tid_atime                    |            3 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tarid_atime                  |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tarid_atime                  |            2 | target_id      | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tarid_atime                  |            3 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_bphone_atime                 |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_bphone_atime                 |            2 | buyer_phone    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_bphone_atime                 |            3 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            1 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            2 | marketing_type | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            3 | action_type    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            4 | success        | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            5 | user_id        | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_ssi_atime                        |            1 | sms_send_id    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_ssi_atime                        |            2 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            2 | campaign_id    | A         |        3237 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            3 | marketing_type | A         |        3268 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            4 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            5 | action_type    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            6 | success        | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_camid_mt_atime_atype             |            1 | campaign_id    | A         |        2869 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_camid_mt_atime_atype             |            2 | marketing_type | A         |        2899 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_camid_mt_atime_atype             |            3 | action_type    | A         |        3396 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_camid_mt_atime_atype             |            4 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
++---------------+------------+-----------------------------------------+--------------+----------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+
+
+EXPLAIN  SELECT * FROM action_record ar WHERE ar.campaign_id = 2829001;
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-------+
+
+| id | select_type | table | type | possible_keys               | key                         | key_len | ref   | rows  | Extra |
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-------+
+
+|  1 | SIMPLE      | ar    | ref  | idx_ar_camid_mt_atime_atype | idx_ar_camid_mt_atime_atype | 9       | const | 57324 | NULL  |
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-------+
+
+
+
+EXPLAIN  SELECT * FROM action_record ar WHERE ar.campaign_id = 2829001 AND ar.marketing_type = 'DUNNING';
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------+-------+-----------------------+
+
+| id | select_type | table | type | possible_keys               | key                         | key_len | ref         | rows  | Extra                 |
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------+-------+-----------------------+
+
+|  1 | SIMPLE      | ar    | ref  | idx_ar_camid_mt_atime_atype | idx_ar_camid_mt_atime_atype | 162     | const,const | 56942 | Using index condition |
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------+-------+-----------------------+
+
+1 row in set (0.00 sec)
+
+
+
+SELECT * FROM action_record ar WHERE ar.campaign_id = 2829001 AND ar.marketing_type = 'DUNNING' AND ar.action_type = 'SMS';
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------------+-------+-----------------------+
+
+| id | select_type | table | type | possible_keys               | key                         | key_len | ref               | rows  | Extra                 |
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------------+-------+-----------------------+
+
+|  1 | SIMPLE      | ar    | ref  | idx_ar_camid_mt_atime_atype | idx_ar_camid_mt_atime_atype | 315     | const,const,const | 56942 | Using index condition |
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------------+-------+-----------------------+
+
+
+
+EXPLAIN  SELECT * FROM action_record ar WHERE ar.campaign_id = 2829001 AND  ar.action_type = 'SMS';
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-----------------------+
+
+| id | select_type | table | type | possible_keys               | key                         | key_len | ref   | rows  | Extra                 |
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-----------------------+
+
+|  1 | SIMPLE      | ar    | ref  | idx_ar_camid_mt_atime_atype | idx_ar_camid_mt_atime_atype | 9       | const | 57324 | Using index condition |
+
++----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-----------------------+
+</code></pre>">
+<span class="hljs-operator"><span class="hljs-keyword">show</span> <span class="hljs-keyword">index</span> <span class="hljs-keyword">from</span> action_record;</span>
+
++<span class="hljs-comment">---------------+------------+-----------------------------------------+--------------+----------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| Table         | Non_unique | Key_name                                | Seq_in_index | Column_name    | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++<span class="hljs-comment">---------------+------------+-----------------------------------------+--------------+----------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| action_record |          0 | PRIMARY                                 |            1 | id             | A         |     1388978 |     NULL | NULL   |      | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_buyer_atime_success          |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_buyer_atime_success          |            2 | buyer_nick     | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_buyer_atime_success          |            3 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_buyer_atime_success          |            4 | success        | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tid_atime                    |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tid_atime                    |            2 | trade_id       | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tid_atime                    |            3 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tarid_atime                  |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tarid_atime                  |            2 | target_id      | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_tarid_atime                  |            3 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_bphone_atime                 |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_bphone_atime                 |            2 | buyer_phone    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_bphone_atime                 |            3 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            1 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            2 | marketing_type | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            3 | action_type    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            4 | success        | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_atime_mt_atype_succ_uid          |            5 | user_id        | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_ssi_atime                        |            1 | sms_send_id    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_ssi_atime                        |            2 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            1 | user_id        | A         |          58 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            2 | campaign_id    | A         |        3237 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            3 | marketing_type | A         |        3268 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            4 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            5 | action_type    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_uid_camid_mt_atime_atype_success |            6 | success        | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_camid_mt_atime_atype             |            1 | campaign_id    | A         |        2869 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_camid_mt_atime_atype             |            2 | marketing_type | A         |        2899 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_camid_mt_atime_atype             |            3 | action_type    | A         |        3396 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| action_record |          1 | idx_ar_camid_mt_atime_atype             |            4 | action_time    | A         |     1388978 |     NULL | NULL   | YES  | BTREE      |         |               |
+
++<span class="hljs-comment">---------------+------------+-----------------------------------------+--------------+----------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+
+
+<span class="hljs-operator"><span class="hljs-keyword">EXPLAIN</span>  <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> action_record ar <span class="hljs-keyword">WHERE</span> ar.campaign_id = <span class="hljs-number">2829001</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-------+</span>
+
+| id | select_type | table | type | possible_keys               | key                         | key_len | ref   | rows  | Extra |
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-------+</span>
+
+|  1 | SIMPLE      | ar    | ref  | idx_ar_camid_mt_atime_atype | idx_ar_camid_mt_atime_atype | 9       | const | 57324 | NULL  |
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-------+</span>
+
+
+
+<span class="hljs-operator"><span class="hljs-keyword">EXPLAIN</span>  <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> action_record ar <span class="hljs-keyword">WHERE</span> ar.campaign_id = <span class="hljs-number">2829001</span> <span class="hljs-keyword">AND</span> ar.marketing_type = <span class="hljs-string">'DUNNING'</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------+-------+-----------------------+</span>
+
+| id | select_type | table | type | possible_keys               | key                         | key_len | ref         | rows  | Extra                 |
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------+-------+-----------------------+</span>
+
+|  1 | SIMPLE      | ar    | ref  | idx_ar_camid_mt_atime_atype | idx_ar_camid_mt_atime_atype | 162     | const,const | 56942 | Using index condition |
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------+-------+-----------------------+</span>
+
+1 row in <span class="hljs-operator"><span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+
+
+
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> action_record ar <span class="hljs-keyword">WHERE</span> ar.campaign_id = <span class="hljs-number">2829001</span> <span class="hljs-keyword">AND</span> ar.marketing_type = <span class="hljs-string">'DUNNING'</span> <span class="hljs-keyword">AND</span> ar.action_type = <span class="hljs-string">'SMS'</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------------+-------+-----------------------+</span>
+
+| id | select_type | table | type | possible_keys               | key                         | key_len | ref               | rows  | Extra                 |
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------------+-------+-----------------------+</span>
+
+|  1 | SIMPLE      | ar    | ref  | idx_ar_camid_mt_atime_atype | idx_ar_camid_mt_atime_atype | 315     | const,const,const | 56942 | Using index condition |
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------------------+-------+-----------------------+</span>
+
+
+
+<span class="hljs-operator"><span class="hljs-keyword">EXPLAIN</span>  <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> action_record ar <span class="hljs-keyword">WHERE</span> ar.campaign_id = <span class="hljs-number">2829001</span> <span class="hljs-keyword">AND</span>  ar.action_type = <span class="hljs-string">'SMS'</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-----------------------+</span>
+
+| id | select_type | table | type | possible_keys               | key                         | key_len | ref   | rows  | Extra                 |
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-----------------------+</span>
+
+|  1 | SIMPLE      | ar    | ref  | idx_ar_camid_mt_atime_atype | idx_ar_camid_mt_atime_atype | 9       | const | 57324 | Using index condition |
+
++<span class="hljs-comment">----+-------------+-------+------+-----------------------------+-----------------------------+---------+-------+-------+-----------------------+</span>
+</code></pre><h2 id="排序"><a name="排序" href="#排序"></a>排序</h2><h4 id="mysql-有两种方式生成排序结果"><a name="mysql-有两种方式生成排序结果" href="#mysql-有两种方式生成排序结果"></a>MySQL 有两种方式生成排序结果</h4><h4 id="利用索引顺序扫描"><a name="利用索引顺序扫描" href="#利用索引顺序扫描"></a>利用索引顺序扫描</h4><ul>
+<li><h5 id="利用索引顺序扫描排序是非常快的，可以同时进行查找和排序操作，当索引的顺序与order-by中的列顺序相同且所有的列是同一方向(全部升序或者全部降序)时，可以使用索引来排序，如果查询是连接多个表，仅当order-by中的所有列都是第一个表的列时才会使用索引，其它情况都会使用filesort，同时还是生成临时表，影响查询性能"><a name="利用索引顺序扫描排序是非常快的，可以同时进行查找和排序操作，当索引的顺序与order-by中的列顺序相同且所有的列是同一方向(全部升序或者全部降序)时，可以使用索引来排序，如果查询是连接多个表，仅当order-by中的所有列都是第一个表的列时才会使用索引，其它情况都会使用filesort，同时还是生成临时表，影响查询性能" href="#利用索引顺序扫描排序是非常快的，可以同时进行查找和排序操作，当索引的顺序与order-by中的列顺序相同且所有的列是同一方向(全部升序或者全部降序)时，可以使用索引来排序，如果查询是连接多个表，仅当order-by中的所有列都是第一个表的列时才会使用索引，其它情况都会使用filesort，同时还是生成临时表，影响查询性能"></a>利用索引顺序扫描排序是非常快的，可以同时进行查找和排序操作，当索引的顺序与ORDER BY中的列顺序相同且所有的列是同一方向(全部升序或者全部降序)时，可以使用索引来排序，如果查询是连接多个表，仅当ORDER BY中的所有列都是第一个表的列时才会使用索引，其它情况都会使用filesort，同时还是生成临时表，影响查询性能</h5>
+</li></ul><h4 id="利用filesort"><a name="利用filesort" href="#利用filesort"></a>利用filesort</h4><ul>
+<li><h5 id="filesort也叫外排序-~~、堆排序~~。-当mysql不能使用索引进行排序时，就会利用自己的排序算法(快速排序算法)在内存(sort-buffer)中对数据进行排序，如果内存装载不下，它会将磁盘上的数据进行分块，再对各个数据块进行排序，然后将各个块合并成有序的结果集，filesort效率不高，如果产生了磁盘io，那么效率就进一步降低，所以平时要避免filesort，更不能容许有磁盘io的排序"><a name="filesort也叫外排序-~~、堆排序~~。-当mysql不能使用索引进行排序时，就会利用自己的排序算法(快速排序算法)在内存(sort-buffer)中对数据进行排序，如果内存装载不下，它会将磁盘上的数据进行分块，再对各个数据块进行排序，然后将各个块合并成有序的结果集，filesort效率不高，如果产生了磁盘io，那么效率就进一步降低，所以平时要避免filesort，更不能容许有磁盘io的排序" href="#filesort也叫外排序-~~、堆排序~~。-当mysql不能使用索引进行排序时，就会利用自己的排序算法(快速排序算法)在内存(sort-buffer)中对数据进行排序，如果内存装载不下，它会将磁盘上的数据进行分块，再对各个数据块进行排序，然后将各个块合并成有序的结果集，filesort效率不高，如果产生了磁盘io，那么效率就进一步降低，所以平时要避免filesort，更不能容许有磁盘io的排序"></a>filesort也叫外排序   <del>、堆排序</del>。 当MySQL不能使用索引进行排序时，就会利用自己的排序算法(快速排序算法)在内存(sort buffer)中对数据进行排序，如果内存装载不下，它会将磁盘上的数据进行分块，再对各个数据块进行排序，然后将各个块合并成有序的结果集，filesort效率不高，如果产生了磁盘IO，那么效率就进一步降低，所以平时要避免filesort，更不能容许有磁盘IO的排序</h5>
+</li><li><h5 id="两遍扫描算法（two-passes):需两次访问数据，尤其在第二次访问数据时会导致大量的随机io。-同时这种方法占用的内存较小。"><a name="两遍扫描算法（two-passes):需两次访问数据，尤其在第二次访问数据时会导致大量的随机io。-同时这种方法占用的内存较小。" href="#两遍扫描算法（two-passes):需两次访问数据，尤其在第二次访问数据时会导致大量的随机io。-同时这种方法占用的内存较小。"></a>两遍扫描算法（two  passes):需两次访问数据，尤其在第二次访问数据时会导致大量的随机IO。 同时这种方法占用的内存较小。</h5>
+</li><li><h5 id="一次扫描算法（single-passes):减少了io次数，效率较高，同时占用的内存会增多。-所以查询语句当中仅列出需要的字段，而不是`select-*-`将会对内存占用有所减少"><a name="一次扫描算法（single-passes):减少了io次数，效率较高，同时占用的内存会增多。-所以查询语句当中仅列出需要的字段，而不是`select-*-`将会对内存占用有所减少" href="#一次扫描算法（single-passes):减少了io次数，效率较高，同时占用的内存会增多。-所以查询语句当中仅列出需要的字段，而不是`select-*-`将会对内存占用有所减少"></a>一次扫描算法（single passes):减少了IO次数，效率较高，同时占用的内存会增多。 所以查询语句当中仅列出需要的字段，而不是<code>select *</code>将会对内存占用有所减少</h5>
+</li></ul><h2 id="临时表"><a name="临时表" href="#临时表"></a>临时表</h2><h4 id="临时表分为“内存临时表”和“磁盘临时表”"><a name="临时表分为“内存临时表”和“磁盘临时表”" href="#临时表分为“内存临时表”和“磁盘临时表”"></a>临时表分为“内存临时表”和“磁盘临时表”</h4><h5 id="一般情况下，mysql会先创建内存临时表，但内存临时表超过配置指定的值后，mysql会将内存临时表导出到磁盘临时表；"><a name="一般情况下，mysql会先创建内存临时表，但内存临时表超过配置指定的值后，mysql会将内存临时表导出到磁盘临时表；" href="#一般情况下，mysql会先创建内存临时表，但内存临时表超过配置指定的值后，mysql会将内存临时表导出到磁盘临时表；"></a>一般情况下，MySQL会先创建内存临时表，但内存临时表超过配置指定的值后，MySQL会将内存临时表导出到磁盘临时表；</h5><pre class="sql hljs"><code class="sql" data-origin="<pre><code class=&quot;sql&quot;>
+ show variables like '%table_size%'
+
++---------------------+----------+
+
+| Variable_name       | Value    |
+
++---------------------+----------+
+
+| max_heap_table_size | 33554432 |
+
+| tmp_table_size      | 33554432 |
+
++---------------------+----------+
+</code></pre>">
+ <span class="hljs-operator"><span class="hljs-keyword">show</span> <span class="hljs-keyword">variables</span> <span class="hljs-keyword">like</span> <span class="hljs-string">'%table_size%'</span>
+
++<span class="hljs-comment">---------------------+----------+</span>
+
+| Variable_name       | <span class="hljs-keyword">Value</span>    |
+
++<span class="hljs-comment">---------------------+----------+</span>
+
+| max_heap_table_size | <span class="hljs-number">33554432</span> |
+
+| tmp_table_size      | <span class="hljs-number">33554432</span> |
+
++<span class="hljs-comment">---------------------+----------+</span>
+</span></code></pre><h5 id="创建内部临时表的场景："><a name="创建内部临时表的场景：" href="#创建内部临时表的场景："></a>创建内部临时表的场景：</h5><ul>
+<li><h5 id="group-by-和-order-by中的列不相同"><a name="group-by-和-order-by中的列不相同" href="#group-by-和-order-by中的列不相同"></a>group by 和 order by中的列不相同</h5>
+</li><li><h5 id="order-by的列不是引用from-表列表中-的第一表"><a name="order-by的列不是引用from-表列表中-的第一表" href="#order-by的列不是引用from-表列表中-的第一表"></a>order by的列不是引用from 表列表中 的第一表</h5>
+</li><li><h5 id="group-by的列不是引用from-表列表中-的第一表"><a name="group-by的列不是引用from-表列表中-的第一表" href="#group-by的列不是引用from-表列表中-的第一表"></a>group by的列不是引用from 表列表中 的第一表</h5>
+</li><li><h5 id="使用了sql_small_result选项"><a name="使用了sql_small_result选项" href="#使用了sql_small_result选项"></a>使用了sql_small_result选项</h5>
+</li><li><h5 id="含有distinct-的-order-by语句"><a name="含有distinct-的-order-by语句" href="#含有distinct-的-order-by语句"></a>含有distinct 的 order by语句</h5>
+</li><li><h5 id="含有-group_concat()-或者-count(distinct)的语句"><a name="含有-group_concat()-或者-count(distinct)的语句" href="#含有-group_concat()-或者-count(distinct)的语句"></a>含有 GROUP_CONCAT() 或者 COUNT(DISTINCT)的语句</h5>
+</li></ul><h5 id="直接创建磁盘临时表的场景："><a name="直接创建磁盘临时表的场景：" href="#直接创建磁盘临时表的场景："></a>直接创建磁盘临时表的场景：</h5><ul>
+<li><h5 id="表包含text或者blob列"><a name="表包含text或者blob列" href="#表包含text或者blob列"></a>表包含TEXT或者BLOB列</h5>
+</li><li><h5 id="使用union或者union-all时，select子句中包含大于512字节的列"><a name="使用union或者union-all时，select子句中包含大于512字节的列" href="#使用union或者union-all时，select子句中包含大于512字节的列"></a>使用UNION或者UNION ALL时，SELECT子句中包含大于512字节的列</h5>
+</li></ul><h2 id="index-merge--->https://dev.mysql.com/doc/refman/5.7/en/index-merge-optimization.html"><a name="index-merge--->https://dev.mysql.com/doc/refman/5.7/en/index-merge-optimization.html" href="#index-merge---&gt;https://dev.mysql.com/doc/refman/5.7/en/index-merge-optimization.html"></a>Index Merge —&gt;<a href="https://dev.mysql.com/doc/refman/5.7/en/index-merge-optimization.html">https://dev.mysql.com/doc/refman/5.7/en/index-merge-optimization.html</a></h2><h4 id="index-merge——索引归并，即针对一张表，同时使用多个索引进行查询，然后将各个索引查出来的结果进行进一步的操作，可以是求交-——intersect，也可以是求和——union，针对union还有一种补充算法——sort-union"><a name="index-merge——索引归并，即针对一张表，同时使用多个索引进行查询，然后将各个索引查出来的结果进行进一步的操作，可以是求交-——intersect，也可以是求和——union，针对union还有一种补充算法——sort-union" href="#index-merge——索引归并，即针对一张表，同时使用多个索引进行查询，然后将各个索引查出来的结果进行进一步的操作，可以是求交-——intersect，也可以是求和——union，针对union还有一种补充算法——sort-union"></a>Index Merge——索引归并，即针对一张表，同时使用多个索引进行查询，然后将各个索引查出来的结果进行进一步的操作，可以是求交 ——Intersect，也可以是求和——Union，针对union还有一种补充算法——Sort-Union</h4><h4 id="index-merge-union"><a name="index-merge-union" href="#index-merge-union"></a>Index Merge Union</h4><pre class="sql hljs"><code class="sql" data-origin="<pre><code class=&quot;sql&quot;>
+show index from order_info;
+
++------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| Table      | Non_unique | Key_name                | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| order_info |          0 | PRIMARY                 |            1 | oid         | A         |     4806121 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_tid              |            1 | tid         | A         |     4806121 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_buyer        |            1 | user_id     | A         |          52 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_buyer        |            2 | buyer_nick  | A         |     4806121 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            1 | user_id     | A         |          52 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            2 | end_time    | A         |     4806121 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            3 | status      | A         |     4806121 |     NULL | NULL   | YES  | BTREE      |         |               |
+
++------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+
+
+EXPLAIN SELECT * FROM order_info oi WHERE oi.oid = 442404425970300 OR oi.tid = 442404425960300;
+
++----+-------------+-------+-------------+--------------------+--------------------+---------+------+------+----------------------------------------------+
+
+| id | select_type | table | type        | possible_keys      | key                | key_len | ref  | rows | Extra                                        |
+
++----+-------------+-------+-------------+--------------------+--------------------+---------+------+------+----------------------------------------------+
+
+|  1 | SIMPLE      | oi    | index_merge | PRIMARY,idx_oi_tid | PRIMARY,idx_oi_tid | 8,8     | NULL |    2 | Using union(PRIMARY,idx_oi_tid); Using where |
+
++----+-------------+-------+-------------+--------------------+--------------------+---------+------+------+----------------------------------------------+
+</code></pre>">
+<span class="hljs-operator"><span class="hljs-keyword">show</span> <span class="hljs-keyword">index</span> <span class="hljs-keyword">from</span> order_info;</span>
+
++<span class="hljs-comment">------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| Table      | Non_unique | Key_name                | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++<span class="hljs-comment">------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| order_info |          0 | PRIMARY                 |            1 | oid         | A         |     4806121 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_tid              |            1 | tid         | A         |     4806121 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_buyer        |            1 | user_id     | A         |          52 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_buyer        |            2 | buyer_nick  | A         |     4806121 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            1 | user_id     | A         |          52 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            2 | end_time    | A         |     4806121 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            3 | status      | A         |     4806121 |     NULL | NULL   | YES  | BTREE      |         |               |
+
++<span class="hljs-comment">------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+
+
+<span class="hljs-operator"><span class="hljs-keyword">EXPLAIN</span> <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> order_info oi <span class="hljs-keyword">WHERE</span> oi.oid = <span class="hljs-number">442404425970300</span> <span class="hljs-keyword">OR</span> oi.tid = <span class="hljs-number">442404425960300</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+-------------+--------------------+--------------------+---------+------+------+----------------------------------------------+</span>
+
+| id | select_type | table | type        | possible_keys      | key                | key_len | ref  | rows | Extra                                        |
+
++<span class="hljs-comment">----+-------------+-------+-------------+--------------------+--------------------+---------+------+------+----------------------------------------------+</span>
+
+|  1 | SIMPLE      | oi    | index_merge | PRIMARY,idx_oi_tid | PRIMARY,idx_oi_tid | 8,8     | NULL |    2 | Using union(PRIMARY,idx_oi_tid); Using where |
+
++<span class="hljs-comment">----+-------------+-------+-------------+--------------------+--------------------+---------+------+------+----------------------------------------------+</span>
+</code></pre><h2 id="icp-特性-->https://dev.mysql.com/doc/refman/5.6/en/index-condition-pushdown-optimization.html"><a name="icp-特性-->https://dev.mysql.com/doc/refman/5.6/en/index-condition-pushdown-optimization.html" href="#icp-特性--&gt;https://dev.mysql.com/doc/refman/5.6/en/index-condition-pushdown-optimization.html"></a>ICP 特性—&gt;<a href="https://dev.mysql.com/doc/refman/5.6/en/index-condition-pushdown-optimization.html">https://dev.mysql.com/doc/refman/5.6/en/index-condition-pushdown-optimization.html</a></h2><h4 id="icp是mysql用索引去表里取数据的一种优化"><a name="icp是mysql用索引去表里取数据的一种优化" href="#icp是mysql用索引去表里取数据的一种优化"></a>ICP是MySQL用索引去表里取数据的一种优化</h4><ul>
+<li><h5 id="关闭icp时,index-仅仅是data-access-的一种访问方式，存储引擎通过索引回表获取的数据会传递到mysql-server-层进行where条件过滤"><a name="关闭icp时,index-仅仅是data-access-的一种访问方式，存储引擎通过索引回表获取的数据会传递到mysql-server-层进行where条件过滤" href="#关闭icp时,index-仅仅是data-access-的一种访问方式，存储引擎通过索引回表获取的数据会传递到mysql-server-层进行where条件过滤"></a>关闭ICP时,index 仅仅是data access 的一种访问方式，存储引擎通过索引回表获取的数据会传递到MySQL Server 层进行where条件过滤</h5>
+</li><li><h5 id="打开icp时,如果部分where条件能使用索引中的字段,mysql-server-会把这部分下推到引擎层,可以利用index过滤的where条件在存储引擎层进行数据过滤,而非将所有通过index-access的结果传递到mysql-server层进行where过滤"><a name="打开icp时,如果部分where条件能使用索引中的字段,mysql-server-会把这部分下推到引擎层,可以利用index过滤的where条件在存储引擎层进行数据过滤,而非将所有通过index-access的结果传递到mysql-server层进行where过滤" href="#打开icp时,如果部分where条件能使用索引中的字段,mysql-server-会把这部分下推到引擎层,可以利用index过滤的where条件在存储引擎层进行数据过滤,而非将所有通过index-access的结果传递到mysql-server层进行where过滤"></a>打开ICP时,如果部分where条件能使用索引中的字段,MySQL Server 会把这部分下推到引擎层,可以利用index过滤的where条件在存储引擎层进行数据过滤,而非将所有通过index access的结果传递到MySQL server层进行where过滤</h5>
+</li><li><h5 id="优化效果:icp能减少引擎层访问基表的次数和mysql-server-访问存储引擎的次数,减少io次数，提高查询语句性能"><a name="优化效果:icp能减少引擎层访问基表的次数和mysql-server-访问存储引擎的次数,减少io次数，提高查询语句性能" href="#优化效果:icp能减少引擎层访问基表的次数和mysql-server-访问存储引擎的次数,减少io次数，提高查询语句性能"></a>优化效果:ICP能减少引擎层访问基表的次数和MySQL Server 访问存储引擎的次数,减少io次数，提高查询语句性能</h5>
+</li></ul><pre class="sql hljs"><code class="sql" data-origin="<pre><code class=&quot;sql&quot;>
+ CREATE TABLE `employees` (
+
+  `emp_no` int(11) NOT NULL,
+
+  `birth_date` date NOT NULL,
+
+  `first_name` varchar(14) NOT NULL,
+
+  `last_name` varchar(16) NOT NULL,
+
+  `gender` enum('M','F') NOT NULL,
+
+  `hire_date` date NOT NULL,
+
+  PRIMARY KEY (`emp_no`),
+
+  KEY `idx_emp_fn_ln` (`first_name`,`last_name`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+******************************ICP ON***************************************
+
+mysql&amp;gt; set optimizer_switch='index_condition_pushdown=on';
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+mysql&amp;gt; set profiling = 1;
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+
+
+mysql&amp;gt; select * from employees where first_name='Sumant' and last_name like '%ac';
+
++--------+------------+------------+-----------+--------+------------+
+
+| emp_no | birth_date | first_name | last_name | gender | hire_date  |
+
++--------+------------+------------+-----------+--------+------------+
+
+|  10009 | 1952-04-19 | Sumant     | Peac      | F      | 1985-02-18 |
+
++--------+------------+------------+-----------+--------+------------+
+
+
+
+1 row in set (0.00 sec)
+
+
+
+mysql&amp;gt; set profiling = 0;
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+
+
+mysql&amp;gt; show profiles;
+
+
+
++----------+------------+----------------------------------------------------------------------------+
+
+| Query_ID | Duration   | Query                                                                      |
+
++----------+------------+----------------------------------------------------------------------------+
+
+|        1 | 0.00161925 | select * from employees where first_name='Sumant' and last_name like '%ac' |
+
++----------+------------+----------------------------------------------------------------------------+
+
+
+
+1 row in set, 1 warning (0.00 sec)
+
+
+
+mysql&amp;gt; show profile for query 1;
+
++----------------------+----------+
+
+| Status               | Duration |
+
++----------------------+----------+
+
+| starting             | 0.000097 |
+
+| checking permissions | 0.000009 |
+
+| Opening tables       | 0.000854 |
+
+| init                 | 0.000045 |
+
+| System lock          | 0.000011 |
+
+| optimizing           | 0.000016 |
+
+| statistics           | 0.000127 |
+
+| preparing            | 0.000016 |
+
+| executing            | 0.000003 |
+
+| Sending data         | 0.000320 |      &amp;lt;&amp;lt;=====
+
+| end                  | 0.000008 |
+
+| query end            | 0.000007 |
+
+| closing tables       | 0.000010 |
+
+| freeing items        | 0.000076 |
+
+| cleaning up          | 0.000023 |
+
++----------------------+----------+
+
+
+
+15 rows in set, 1 warning (0.00 sec)
+
+
+
+mysql&amp;gt; explain select * from employees where first_name='Sumant' and last_name like '%ac';
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-----------------------+
+
+| id | select_type | table     | partitions | type | possible_keys | key           | key_len | ref   | rows | filtered | Extra                 |
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-----------------------+
+
+|  1 | SIMPLE      | employees | NULL       | ref  | idx_emp_fn_ln | idx_emp_fn_ln | 44      | const |  249 |    11.11 | Using index condition |   &amp;lt;&amp;lt;=====
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-----------------------+
+
+1 row in set, 1 warning (0.00 sec)
+
+
+
+******************************ICP OFF**************************************
+
+
+
+mysql&amp;gt; set optimizer_switch='index_condition_pushdown=off';
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+mysql&amp;gt; set profiling = 1;
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+
+
+mysql&amp;gt; select * from employees where first_name='Sumant' and last_name like '%ac' ;
+
++--------+------------+------------+-----------+--------+------------+
+
+| emp_no | birth_date | first_name | last_name | gender | hire_date  |
+
++--------+------------+------------+-----------+--------+------------+
+
+|  10009 | 1952-04-19 | Sumant     | Peac      | F      | 1985-02-18 |
+
++--------+------------+------------+-----------+--------+------------+
+
+1 row in set (0.01 sec)
+
+
+
+mysql&amp;gt; set profiling = 0;
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+
+
+mysql&amp;gt; show profiles;
+
++----------+------------+----------------------------------------------------------------------------+
+
+| Query_ID | Duration   | Query                                                                      |
+
++----------+------------+----------------------------------------------------------------------------+
+
+|        1 | 0.00161925 | select * from employees where first_name='Sumant' and last_name like '%ac' |
+
+|        2 | 0.00992525 | select * from employees where first_name='Sumant' and last_name like '%ac' |
+
++----------+------------+----------------------------------------------------------------------------+
+
+2 rows in set, 1 warning (0.00 sec)
+
+
+
+mysql&amp;gt; show profile for query 2;
+
++----------------------+----------+
+
+| Status               | Duration |
+
++----------------------+----------+
+
+| starting             | 0.000094 |
+
+| checking permissions | 0.000008 |
+
+| Opening tables       | 0.000025 |
+
+| init                 | 0.000039 |
+
+| System lock          | 0.000011 |
+
+| optimizing           | 0.000014 |
+
+| statistics           | 0.000133 |
+
+| preparing            | 0.000019 |
+
+| executing            | 0.000004 |
+
+| Sending data         | 0.009437 |     &amp;lt;&amp;lt;=====
+
+| end                  | 0.000017 |
+
+| query end            | 0.000010 |
+
+| closing tables       | 0.000011 |
+
+| freeing items        | 0.000088 |
+
+| cleaning up          | 0.000017 |
+
++----------------------+----------+
+
+15 rows in set, 1 warning (0.00 sec)
+
+
+
+mysql&amp;gt; explain select * from employees where first_name='Sumant' and last_name like '%ac';
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-------------+
+
+| id | select_type | table     | partitions | type | possible_keys | key           | key_len | ref   | rows | filtered | Extra       |
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-------------+
+
+|  1 | SIMPLE      | employees | NULL       | ref  | idx_emp_fn_ln | idx_emp_fn_ln | 44      | const |  249 |    11.11 | Using where |   &amp;lt;&amp;lt;=====
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-------------+
+
+1 row in set, 1 warning (0.00 sec)
+</code></pre>">
+ CREATE TABLE `employees` (
+
+  `emp_no` int(11) NOT NULL,
+
+  `birth_date` date NOT NULL,
+
+  `first_name` varchar(14) NOT NULL,
+
+  `last_name` varchar(16) NOT NULL,
+
+  `gender` enum('M','F') NOT NULL,
+
+  `hire_date` date NOT NULL,
+
+  PRIMARY KEY (`emp_no`),
+
+  KEY `idx_emp_fn_ln` (`first_name`,`last_name`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+******************************ICP ON***************************************
+
+mysql&gt; set optimizer_switch='index_condition_pushdown=on';
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+mysql&gt; set profiling = 1;
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+
+
+mysql&gt; select * from employees where first_name='Sumant' and last_name like '%ac';
+
++--------+------------+------------+-----------+--------+------------+
+
+| emp_no | birth_date | first_name | last_name | gender | hire_date  |
+
++--------+------------+------------+-----------+--------+------------+
+
+|  10009 | 1952-04-19 | Sumant     | Peac      | F      | 1985-02-18 |
+
++--------+------------+------------+-----------+--------+------------+
+
+
+
+1 row in set (0.00 sec)
+
+
+
+mysql&gt; set profiling = 0;
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+
+
+mysql&gt; show profiles;
+
+
+
++----------+------------+----------------------------------------------------------------------------+
+
+| Query_ID | Duration   | Query                                                                      |
+
++----------+------------+----------------------------------------------------------------------------+
+
+|        1 | 0.00161925 | select * from employees where first_name='Sumant' and last_name like '%ac' |
+
++----------+------------+----------------------------------------------------------------------------+
+
+
+
+1 row in set, 1 warning (0.00 sec)
+
+
+
+mysql&gt; show profile for query 1;
+
++----------------------+----------+
+
+| Status               | Duration |
+
++----------------------+----------+
+
+| starting             | 0.000097 |
+
+| checking permissions | 0.000009 |
+
+| Opening tables       | 0.000854 |
+
+| init                 | 0.000045 |
+
+| System lock          | 0.000011 |
+
+| optimizing           | 0.000016 |
+
+| statistics           | 0.000127 |
+
+| preparing            | 0.000016 |
+
+| executing            | 0.000003 |
+
+| Sending data         | 0.000320 |      &lt;&lt;=====
+
+| end                  | 0.000008 |
+
+| query end            | 0.000007 |
+
+| closing tables       | 0.000010 |
+
+| freeing items        | 0.000076 |
+
+| cleaning up          | 0.000023 |
+
++----------------------+----------+
+
+
+
+15 rows in set, 1 warning (0.00 sec)
+
+
+
+mysql&gt; explain select * from employees where first_name='Sumant' and last_name like '%ac';
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-----------------------+
+
+| id | select_type | table     | partitions | type | possible_keys | key           | key_len | ref   | rows | filtered | Extra                 |
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-----------------------+
+
+|  1 | SIMPLE      | employees | NULL       | ref  | idx_emp_fn_ln | idx_emp_fn_ln | 44      | const |  249 |    11.11 | Using index condition |   &lt;&lt;=====
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-----------------------+
+
+1 row in set, 1 warning (0.00 sec)
+
+
+
+******************************ICP OFF**************************************
+
+
+
+mysql&gt; set optimizer_switch='index_condition_pushdown=off';
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+mysql&gt; set profiling = 1;
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+
+
+mysql&gt; select * from employees where first_name='Sumant' and last_name like '%ac' ;
+
++--------+------------+------------+-----------+--------+------------+
+
+| emp_no | birth_date | first_name | last_name | gender | hire_date  |
+
++--------+------------+------------+-----------+--------+------------+
+
+|  10009 | 1952-04-19 | Sumant     | Peac      | F      | 1985-02-18 |
+
++--------+------------+------------+-----------+--------+------------+
+
+1 row in set (0.01 sec)
+
+
+
+mysql&gt; set profiling = 0;
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+
+
+mysql&gt; show profiles;
+
++----------+------------+----------------------------------------------------------------------------+
+
+| Query_ID | Duration   | Query                                                                      |
+
++----------+------------+----------------------------------------------------------------------------+
+
+|        1 | 0.00161925 | select * from employees where first_name='Sumant' and last_name like '%ac' |
+
+|        2 | 0.00992525 | select * from employees where first_name='Sumant' and last_name like '%ac' |
+
++----------+------------+----------------------------------------------------------------------------+
+
+2 rows in set, 1 warning (0.00 sec)
+
+
+
+mysql&gt; show profile for query 2;
+
++----------------------+----------+
+
+| Status               | Duration |
+
++----------------------+----------+
+
+| starting             | 0.000094 |
+
+| checking permissions | 0.000008 |
+
+| Opening tables       | 0.000025 |
+
+| init                 | 0.000039 |
+
+| System lock          | 0.000011 |
+
+| optimizing           | 0.000014 |
+
+| statistics           | 0.000133 |
+
+| preparing            | 0.000019 |
+
+| executing            | 0.000004 |
+
+| Sending data         | 0.009437 |     &lt;&lt;=====
+
+| end                  | 0.000017 |
+
+| query end            | 0.000010 |
+
+| closing tables       | 0.000011 |
+
+| freeing items        | 0.000088 |
+
+| cleaning up          | 0.000017 |
+
++----------------------+----------+
+
+15 rows in set, 1 warning (0.00 sec)
+
+
+
+mysql&gt; explain select * from employees where first_name='Sumant' and last_name like '%ac';
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-------------+
+
+| id | select_type | table     | partitions | type | possible_keys | key           | key_len | ref   | rows | filtered | Extra       |
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-------------+
+
+|  1 | SIMPLE      | employees | NULL       | ref  | idx_emp_fn_ln | idx_emp_fn_ln | 44      | const |  249 |    11.11 | Using where |   &lt;&lt;=====
+
++----+-------------+-----------+------------+------+---------------+---------------+---------+-------+------+----------+-------------+
+
+1 row in set, 1 warning (0.00 sec)
+</code></pre><h4 id="关闭icp"><a name="关闭icp" href="#关闭icp"></a>关闭ICP</h4><p> <img src="http://i2.muimg.com/588926/683e99c97ac56be9.png" alt=""></p><h5 id="在icp关闭的情况下，索引仅仅作为data-access使用。"><a name="在icp关闭的情况下，索引仅仅作为data-access使用。" href="#在icp关闭的情况下，索引仅仅作为data-access使用。"></a>在ICP关闭的情况下，索引仅仅作为data access使用。</h5><hr class="section"><h4 id="开启icp"><a name="开启icp" href="#开启icp"></a>开启ICP</h4><p><img src="http://i4.buimg.com/588926/a6997171b7f295dc.png" alt=""></p><h5 id="（上面这张图中，在server-端应该还是有-using-where，-因为where-条件的字段仍然有可能不在索引之内）"><a name="（上面这张图中，在server-端应该还是有-using-where，-因为where-条件的字段仍然有可能不在索引之内）" href="#（上面这张图中，在server-端应该还是有-using-where，-因为where-条件的字段仍然有可能不在索引之内）"></a>（上面这张图中，在server 端应该还是有 using where， 因为where 条件的字段仍然有可能不在索引之内）</h5><h5 id="在icp优化开启时，在存储引擎端首先用索引过滤可以过滤的where条件，然后再用索引做data-access，被index-condition过滤掉的数据不必读取，也不会返回server端"><a name="在icp优化开启时，在存储引擎端首先用索引过滤可以过滤的where条件，然后再用索引做data-access，被index-condition过滤掉的数据不必读取，也不会返回server端" href="#在icp优化开启时，在存储引擎端首先用索引过滤可以过滤的where条件，然后再用索引做data-access，被index-condition过滤掉的数据不必读取，也不会返回server端"></a>在ICP优化开启时，在存储引擎端首先用索引过滤可以过滤的where条件，然后再用索引做data access，被index condition过滤掉的数据不必读取，也不会返回server端</h5><h2 id="索引的创建和使用"><a name="索引的创建和使用" href="#索引的创建和使用"></a>索引的创建和使用</h2><ul>
+<li><h5 id="要根据创建的实际情况创建索引，不要创建多余和重复的索引。"><a name="要根据创建的实际情况创建索引，不要创建多余和重复的索引。" href="#要根据创建的实际情况创建索引，不要创建多余和重复的索引。"></a>要根据创建的实际情况创建索引，不要创建多余和重复的索引。</h5>
+</li><li><h5 id="对于长的字符串字段，要进行部分索引。-varchar(255)-字段比如只索引前10个字符,对长字段进行全部索引时，~~mysql会报出索引长度超过767-bytes-限制报错~~"><a name="对于长的字符串字段，要进行部分索引。-varchar(255)-字段比如只索引前10个字符,对长字段进行全部索引时，~~mysql会报出索引长度超过767-bytes-限制报错~~" href="#对于长的字符串字段，要进行部分索引。-varchar(255)-字段比如只索引前10个字符,对长字段进行全部索引时，~~mysql会报出索引长度超过767-bytes-限制报错~~"></a>对于长的字符串字段，要进行部分索引。 varchar(255) 字段比如只索引前10个字符,对长字段进行全部索引时，<del>MySQL会报出索引长度超过767 bytes 限制报错</del></h5>
+</li><li><h5 id="根据排序order-by-,group-by-,-distinct-字段添加索引"><a name="根据排序order-by-,group-by-,-distinct-字段添加索引" href="#根据排序order-by-,group-by-,-distinct-字段添加索引"></a>根据排序order by ,group by , distinct 字段添加索引</h5>
+</li><li><h5 id="覆盖索引的效率最好，因为查询所需的字段都在索引里面，不需要回表，减少随机io。"><a name="覆盖索引的效率最好，因为查询所需的字段都在索引里面，不需要回表，减少随机io。" href="#覆盖索引的效率最好，因为查询所需的字段都在索引里面，不需要回表，减少随机io。"></a>覆盖索引的效率最好，因为查询所需的字段都在索引里面，不需要回表，减少随机IO。</h5>
+</li><li><h5 id="查询使用索引是要遵循-==最左原则==，否则将无法利用索引复合索引"><a name="查询使用索引是要遵循-==最左原则==，否则将无法利用索引复合索引" href="#查询使用索引是要遵循-==最左原则==，否则将无法利用索引复合索引"></a>查询使用索引是要遵循 <mark>最左原则</mark>，否则将无法利用索引复合索引</h5>
+</li></ul><h2 id="无法利用索引的情况"><a name="无法利用索引的情况" href="#无法利用索引的情况"></a>无法利用索引的情况</h2><ul>
+<li><h5 id="索引列进行数据运算或者函数运算-```-where-date(created_time)-<-'2017-05-05'-```"><a name="索引列进行数据运算或者函数运算-```-where-date(created_time)-<-'2017-05-05'-```" href="#索引列进行数据运算或者函数运算-```-where-date(created_time)-&lt;-'2017-05-05'-```"></a>索引列进行数据运算或者函数运算     <code>where date(created_time) &lt; '2017-05-05'</code></h5>
+</li><li><h5 id="未含复合索引的前缀字段,即没有遵循==最左前缀==原则-```index_table_abc(a,b,c)-,-where-b-=-'yy'-and-c-=-'xx';```"><a name="未含复合索引的前缀字段,即没有遵循==最左前缀==原则-```index_table_abc(a,b,c)-,-where-b-=-'yy'-and-c-=-'xx';```" href="#未含复合索引的前缀字段,即没有遵循==最左前缀==原则-```index_table_abc(a,b,c)-,-where-b-=-'yy'-and-c-=-'xx';```"></a>未含复合索引的前缀字段,即没有遵循<mark>最左前缀</mark>原则  <code>index_table_abc(a,b,c) , where b = 'yy' and c = 'xx';</code></h5>
+</li><li><h5 id="前缀通配符" _"-"%",-```-like-%abc```"=""><a name="前缀通配符" _"-"%",-```-like-%abc```"="" href="#前缀通配符"></a>前缀通配符”_” “%”, <code>like %abc</code></h5>
+</li><li><h5 id="not,<>,!=-也不能用到索引"><a name="not,<>,!=-也不能用到索引" href="#not,&lt;&gt;,!=-也不能用到索引"></a>NOT,&lt;&gt;,!= 也不能用到索引</h5>
+</li><li><h5 id="字段类型不匹配。-要防止字段类型的隐式转换"><a name="字段类型不匹配。-要防止字段类型的隐式转换" href="#字段类型不匹配。-要防止字段类型的隐式转换"></a>字段类型不匹配。 要防止字段类型的隐式转换</h5>
+</li></ul><pre class="sql hljs"><code class="sql" data-origin="<pre><code class=&quot;sql&quot;>
+show index from order_info;
+
++------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| Table      | Non_unique | Key_name                | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| order_info |          0 | PRIMARY                 |            1 | oid         | A         |     4806124 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_tid              |            1 | tid         | A         |     4806124 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_buyer        |            1 | user_id     | A         |          52 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_buyer        |            2 | buyer_nick  | A         |     4806124 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            1 | user_id     | A         |          52 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            2 | end_time    | A         |     4806124 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            3 | status      | A         |     4806124 |     NULL | NULL   | YES  | BTREE      |         |               |
+
++------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+1 row in set (0.00 sec)
+
+
+
+EXPLAIN SELECT * FROM order_info oi WHERE oi.tid = 445419429200724;
+
++----+-------------+-------+------+---------------+------------+---------+-------+------+-------+
+
+| id | select_type | table | type | possible_keys | key        | key_len | ref   | rows | Extra |
+
++----+-------------+-------+------+---------------+------------+---------+-------+------+-------+
+
+|  1 | SIMPLE      | oi    | ref  | idx_oi_tid    | idx_oi_tid | 8       | const |    1 | NULL  |
+
++----+-------------+-------+------+---------------+------------+---------+-------+------+-------+
+
+1 row in set (0.00 sec)
+
+
+
+EXPLAIN SELECT * FROM order_info oi WHERE oi.tid = '445419429200724';
+
++----+-------------+-------+------+---------------+------------+---------+-------+------+-----------------------+
+
+| id | select_type | table | type | possible_keys | key        | key_len | ref   | rows | Extra                 |
+
++----+-------------+-------+------+---------------+------------+---------+-------+------+-----------------------+
+
+|  1 | SIMPLE      | oi    | ref  | idx_oi_tid    | idx_oi_tid | 8       | const |    1 | Using index condition |
+
++----+-------------+-------+------+---------------+------------+---------+-------+------+-----------------------+
+
+1 row in set (0.00 sec)
+
+
+
+*******************************************************************************************
+
+show index from alipay_trade;
+
++--------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| Table        | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++--------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+| alipay_trade |          0 | PRIMARY  |            1 | trade_no    | A         |           1 |     NULL | NULL   |      | BTREE      |         |               |
+
++--------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+
+1 row in set (0.00 sec)
+
+
+
+EXPLAIN SELECT * FROM alipay_trade at WHERE at.trade_no = 2014112641848276;
+
++----+-------------+-------+------+---------------+------+---------+------+------+-------------+
+
+| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows | Extra       |
+
++----+-------------+-------+------+---------------+------+---------+------+------+-------------+
+
+|  1 | SIMPLE      | at    | ALL  | PRIMARY       | NULL | NULL    | NULL |    1 | Using where |
+
++----+-------------+-------+------+---------------+------+---------+------+------+-------------+
+
+
+
+EXPLAIN SELECT * FROM alipay_trade at WHERE at.trade_no = '2014112641848276';
+
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+
+
+| id | select_type | table | type  | possible_keys | key     | key_len | ref   | rows | Extra |
+
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+
+
+|  1 | SIMPLE      | at    | const | PRIMARY       | PRIMARY | 767     | const |    1 | NULL  |
+
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+
+</code></pre>">
+<span class="hljs-operator"><span class="hljs-keyword">show</span> <span class="hljs-keyword">index</span> <span class="hljs-keyword">from</span> order_info;</span>
+
++<span class="hljs-comment">------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| Table      | Non_unique | Key_name                | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++<span class="hljs-comment">------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| order_info |          0 | PRIMARY                 |            1 | oid         | A         |     4806124 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_tid              |            1 | tid         | A         |     4806124 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_buyer        |            1 | user_id     | A         |          52 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_buyer        |            2 | buyer_nick  | A         |     4806124 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            1 | user_id     | A         |          52 |     NULL | NULL   |      | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            2 | end_time    | A         |     4806124 |     NULL | NULL   | YES  | BTREE      |         |               |
+
+| order_info |          1 | idx_oi_uid_etime_status |            3 | status      | A         |     4806124 |     NULL | NULL   | YES  | BTREE      |         |               |
+
++<span class="hljs-comment">------------+------------+-------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+1 row in <span class="hljs-operator"><span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+
+
+
+<span class="hljs-keyword">EXPLAIN</span> <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> order_info oi <span class="hljs-keyword">WHERE</span> oi.tid = <span class="hljs-number">445419429200724</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+---------------+------------+---------+-------+------+-------+</span>
+
+| id | select_type | table | type | possible_keys | key        | key_len | ref   | rows | Extra |
+
++<span class="hljs-comment">----+-------------+-------+------+---------------+------------+---------+-------+------+-------+</span>
+
+|  1 | SIMPLE      | oi    | ref  | idx_oi_tid    | idx_oi_tid | 8       | const |    1 | NULL  |
+
++<span class="hljs-comment">----+-------------+-------+------+---------------+------------+---------+-------+------+-------+</span>
+
+1 row in <span class="hljs-operator"><span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+
+
+
+<span class="hljs-keyword">EXPLAIN</span> <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> order_info oi <span class="hljs-keyword">WHERE</span> oi.tid = <span class="hljs-string">'445419429200724'</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+---------------+------------+---------+-------+------+-----------------------+</span>
+
+| id | select_type | table | type | possible_keys | key        | key_len | ref   | rows | Extra                 |
+
++<span class="hljs-comment">----+-------------+-------+------+---------------+------------+---------+-------+------+-----------------------+</span>
+
+|  1 | SIMPLE      | oi    | ref  | idx_oi_tid    | idx_oi_tid | 8       | const |    1 | Using index condition |
+
++<span class="hljs-comment">----+-------------+-------+------+---------------+------------+---------+-------+------+-----------------------+</span>
+
+1 row in <span class="hljs-operator"><span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+
+
+
+*******************************************************************************************
+
+<span class="hljs-keyword">show</span> <span class="hljs-keyword">index</span> <span class="hljs-keyword">from</span> alipay_trade;</span>
+
++<span class="hljs-comment">--------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| Table        | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
+
++<span class="hljs-comment">--------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+| alipay_trade |          0 | PRIMARY  |            1 | trade_no    | A         |           1 |     NULL | NULL   |      | BTREE      |         |               |
+
++<span class="hljs-comment">--------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+</span>
+
+1 row in <span class="hljs-operator"><span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+
+
+
+<span class="hljs-keyword">EXPLAIN</span> <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> alipay_trade <span class="hljs-keyword">at</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">at</span>.trade_no = <span class="hljs-number">2014112641848276</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+------+---------------+------+---------+------+------+-------------+</span>
+
+| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows | Extra       |
+
++<span class="hljs-comment">----+-------------+-------+------+---------------+------+---------+------+------+-------------+</span>
+
+|  1 | SIMPLE      | at    | ALL  | PRIMARY       | NULL | NULL    | NULL |    1 | Using where |
+
++<span class="hljs-comment">----+-------------+-------+------+---------------+------+---------+------+------+-------------+</span>
+
+
+
+<span class="hljs-operator"><span class="hljs-keyword">EXPLAIN</span> <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> alipay_trade <span class="hljs-keyword">at</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">at</span>.trade_no = <span class="hljs-string">'2014112641848276'</span>;</span>
+
++<span class="hljs-comment">----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+</span>
+
+| id | select_type | table | type  | possible_keys | key     | key_len | ref   | rows | Extra |
+
++<span class="hljs-comment">----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+</span>
+
+|  1 | SIMPLE      | at    | const | PRIMARY       | PRIMARY | 767     | const |    1 | NULL  |
+
++<span class="hljs-comment">----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+</span>
+</code></pre><h2 id="索引大小"><a name="索引大小" href="#索引大小"></a>索引大小</h2><ul>
+<li><h5 id="允许为null-的字段，索引要多额外一个字节来做标记位"><a name="允许为null-的字段，索引要多额外一个字节来做标记位" href="#允许为null-的字段，索引要多额外一个字节来做标记位"></a>允许为NULL 的字段，索引要多额外一个字节来做标记位</h5>
+</li><li><h5 id="可变字段的索引需要额外的空间来存储索引"><a name="可变字段的索引需要额外的空间来存储索引" href="#可变字段的索引需要额外的空间来存储索引"></a>可变字段的索引需要额外的空间来存储索引</h5>
+</li><li><h5 id="查看explain中的key_len可以发现有没有走到全部索引"><a name="查看explain中的key_len可以发现有没有走到全部索引" href="#查看explain中的key_len可以发现有没有走到全部索引"></a>查看explain中的key_len可以发现有没有走到全部索引</h5>
+</li></ul><h2 id="索引维护"><a name="索引维护" href="#索引维护"></a>索引维护</h2><ul>
+<li><h5 id="索引维护由数据库自动完成，对用户来说是完全透明的"><a name="索引维护由数据库自动完成，对用户来说是完全透明的" href="#索引维护由数据库自动完成，对用户来说是完全透明的"></a>索引维护由数据库自动完成，对用户来说是完全透明的</h5>
+</li><li><h5 id="插入/修改/删除每一个索引行都会变成一个内部封装的事务"><a name="插入/修改/删除每一个索引行都会变成一个内部封装的事务" href="#插入/修改/删除每一个索引行都会变成一个内部封装的事务"></a>插入/修改/删除每一个索引行都会变成一个内部封装的事务</h5>
+</li><li><h5 id="索引越多，事务越长，代价越高"><a name="索引越多，事务越长，代价越高" href="#索引越多，事务越长，代价越高"></a>索引越多，事务越长，代价越高</h5>
+</li><li><h5 id="索引越多对表的插入和索引字段修改就越慢"><a name="索引越多对表的插入和索引字段修改就越慢" href="#索引越多对表的插入和索引字段修改就越慢"></a>索引越多对表的插入和索引字段修改就越慢</h5>
+</li><li><h5 id="控制表上索引的数量，切忌胡乱添加无用索引"><a name="控制表上索引的数量，切忌胡乱添加无用索引" href="#控制表上索引的数量，切忌胡乱添加无用索引"></a>控制表上索引的数量，切忌胡乱添加无用索引</h5>
+</li></ul><h2 id="innodb-引擎对索引的限制"><a name="innodb-引擎对索引的限制" href="#innodb-引擎对索引的限制"></a>InnoDB 引擎对索引的限制</h2><ul>
+<li><h5 id="最多只能存在64个二级索引"><a name="最多只能存在64个二级索引" href="#最多只能存在64个二级索引"></a>最多只能存在64个二级索引</h5>
+</li><li><h5 id="~~索引默认不能超过767bytes~~"><a name="~~索引默认不能超过767bytes~~" href="#~~索引默认不能超过767bytes~~"></a><del>索引默认不能超过767bytes</del></h5>
+</li><li><h5 id="可通过开启变量-```-innodb_large_prefix-```-将索引的长度提升至3072-bytes，同时要保证行格式（row-formate)-为-```-dynamic-```-或者是-```-compressed-```"><a name="可通过开启变量-```-innodb_large_prefix-```-将索引的长度提升至3072-bytes，同时要保证行格式（row-formate)-为-```-dynamic-```-或者是-```-compressed-```" href="#可通过开启变量-```-innodb_large_prefix-```-将索引的长度提升至3072-bytes，同时要保证行格式（row-formate)-为-```-dynamic-```-或者是-```-compressed-```"></a>可通过开启变量 <code>innodb_large_prefix</code> 将索引的长度提升至3072 bytes，同时要保证行格式（row formate) 为  <code>DYNAMIC</code> 或者是  <code>COMPRESSED</code></h5>
+</li><li><h5 id="通过参数-```innodb_page_size```-修改```page-size```时，索引限制大小也会相应的改变-16kb--->-3072-bytes,-8kb--->-1536-bytes-,-4kb--->-768-bytes"><a name="通过参数-```innodb_page_size```-修改```page-size```时，索引限制大小也会相应的改变-16kb--->-3072-bytes,-8kb--->-1536-bytes-,-4kb--->-768-bytes" href="#通过参数-```innodb_page_size```-修改```page-size```时，索引限制大小也会相应的改变-16kb---&gt;-3072-bytes,-8kb---&gt;-1536-bytes-,-4kb---&gt;-768-bytes"></a>通过参数 <code>innodb_page_size</code> 修改<code>page size</code>时，索引限制大小也会相应的改变  16KB —&gt; 3072 bytes, 8KB —&gt; 1536 bytes , 4KB —&gt; 768 bytes</h5>
+</li><li><h5 id="最多允许对16列进行复合索引"><a name="最多允许对16列进行复合索引" href="#最多允许对16列进行复合索引"></a>最多允许对16列进行复合索引</h5>
+</li><li><h5 id="blob和text类型的列只能创建前缀索引"><a name="blob和text类型的列只能创建前缀索引" href="#blob和text类型的列只能创建前缀索引"></a>BLOB和TEXT类型的列只能创建前缀索引</h5>
+</li></ul><h2 id="索引的好处与不足"><a name="索引的好处与不足" href="#索引的好处与不足"></a>索引的好处与不足</h2><h4 id="优点"><a name="优点" href="#优点"></a>优点</h4><ul>
+<li><h5 id="创建唯一性索引，保证数据库表中每一行数据的唯一性"><a name="创建唯一性索引，保证数据库表中每一行数据的唯一性" href="#创建唯一性索引，保证数据库表中每一行数据的唯一性"></a>创建唯一性索引，保证数据库表中每一行数据的唯一性</h5>
+</li><li><h5 id="索引可以将随机i/o变为顺序i/o"><a name="索引可以将随机i/o变为顺序i/o" href="#索引可以将随机i/o变为顺序i/o"></a>索引可以将随机I/O变为顺序I/O</h5>
+</li><li><h5 id="索引可以减少服务器需要扫描的数据量，大大加快数据的检索速度，这也是创建索引的最主要的原因"><a name="索引可以减少服务器需要扫描的数据量，大大加快数据的检索速度，这也是创建索引的最主要的原因" href="#索引可以减少服务器需要扫描的数据量，大大加快数据的检索速度，这也是创建索引的最主要的原因"></a>索引可以减少服务器需要扫描的数据量，大大加快数据的检索速度，这也是创建索引的最主要的原因</h5>
+</li><li><h5 id="在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间"><a name="在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间" href="#在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间"></a>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间</h5>
+</li></ul><h4 id="缺点"><a name="缺点" href="#缺点"></a>缺点</h4><ul>
+<li><h5 id="创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加"><a name="创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加" href="#创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加"></a>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加</h5>
+</li><li><h5 id="索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间"><a name="索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间" href="#索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间"></a>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间</h5>
+</li><li><h5 id="当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，降低了数据的维护速度，影响了数据库的写入性能"><a name="当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，降低了数据的维护速度，影响了数据库的写入性能" href="#当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，降低了数据的维护速度，影响了数据库的写入性能"></a>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，降低了数据的维护速度，影响了数据库的写入性能</h5>
+</li></ul>
+
+<footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
+</body>
+</html>
